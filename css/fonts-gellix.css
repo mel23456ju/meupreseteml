@@ -1,0 +1,25 @@
+/* FONTES Gellix (produto e recompensas) — só woff2; swap = o texto aparece na hora com a fonte
+   do sistema e troca quando a Gellix chega. */
+@font-face {
+    font-family: 'GellixRegular';
+    src: url('../fonts/GellixRegular.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GellixMedium';
+    src: url('../fonts/GellixMedium.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GellixBold';
+    src: url('../fonts/GellixBold.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GellixSemiBold';
+    src: url('../fonts/GellixSemiBold.woff2') format('woff2');
+    font-display: swap;
+}

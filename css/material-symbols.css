@@ -1,0 +1,29 @@
+/* [01/11] Fonte de icones CORTADA so com os icones usados na loja (2,5 KB em vez dos 395 KB da fonte inteira,
+   que fazia os icones aparecerem segundos depois da pagina). Icone novo NAO aparece ate regerar este arquivo:
+     icones: shopping_cart timer verified_user local_shipping autorenew bolt shopping_bag warning
+     regerar (fonte original em front/_temas/fontes-origem/): python -m fontTools.subset material-symbols.woff2 --text="<nomes>" --glyphs="<nomes separados por virgula>"
+              --no-layout-closure --layout-features='*' --flavor=woff2 --output-file=material-symbols-loja.woff2
+   block = nada aparece enquanto carrega (melhor que mostrar o nome do icone em texto); com 2,5 KB e preload e instantaneo. */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../fonts/material-symbols-loja.woff2?v=1) format('woff2');
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
