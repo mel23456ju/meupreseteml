@@ -4,15 +4,15 @@ module.exports = async (req, res) => {
   if (cors(req, res)) return;
 
   const code = (req.query.code || '').trim();
-  if (!code) return res.status(400).json({ success: false, error: 'code required' });
+  const qsCheckoutId = (req.query.checkout_id || '').trim();
+  if (!code && !qsCheckoutId) return res.status(400).json({ success: false, error: 'code or checkout_id required' });
 
-  const tx = txLoad(code);
-  if (!tx) return res.status(404).json({ success: false, status: 'not_found' });
+  const tx = code ? txLoad(code) : null;
 
-  if (tx.paid) return res.json({ success: true, status: 'paid', payment_code: code });
+  if (tx && tx.paid) return res.json({ success: true, status: 'paid', payment_code: code });
 
-  const checkoutId = String(tx.checkout_id || '');
-  if (!checkoutId) return res.json({ success: true, status: tx.status || 'pending', payment_code: code });
+  const checkoutId = String((tx && tx.checkout_id) || qsCheckoutId || '');
+  if (!checkoutId) return res.json({ success: true, status: (tx && tx.status) || 'pending', payment_code: code });
 
   const r = await zenithFetch('GET', '/api-sales/pix/' + encodeURIComponent(checkoutId));
   const j = r.json;
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
   const isPaid = ['COMPLETED', 'SUCCEEDED', 'AUTHORIZED', 'CAPTURED', 'PAID', 'APPROVED'].includes(zenithStatus);
   const isFailed = ['FAILED', 'CANCELED', 'CANCELLED', 'REFUNDED', 'EXPIRED'].includes(zenithStatus);
 
-  if (isPaid && !tx.paid) {
+  if (isPaid && tx && !tx.paid) {
     tx.paid = true;
     tx.status = 'paid';
     tx.paid_at = Math.floor(Date.now() / 1000);
@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
     }
   }
 
-  if (isFailed && tx.status !== 'failed') {
+  if (isFailed && tx && tx.status !== 'failed') {
     tx.status = 'failed';
     tx.raw_check = j;
     txSave(tx);

@@ -9,6 +9,7 @@
   var currentStep = 1;
   var selectedFrete = 0; // in cents
   var paymentCode = null;
+  var checkoutId = null;
   var pollingInterval = null;
   var timerInterval = null;
   var pixTimerInterval = null;
@@ -24,7 +25,7 @@
   // [17/10] pagina ESGOTOU (antes do TENF) com o codigo do pedido pago; sem oferta ela mesma segue p/ /up/
   function esgotouUrl(code){ var q = getUTMQueryString(); return rota('esgotou') + (q ? q + '&' : '?') + 'c=' + encodeURIComponent(code || ''); }
   function rememberMainPix(code){
-    try { localStorage.setItem('ml_main_pix', JSON.stringify({ code: code, ts: Date.now() })); } catch(e) {}
+    try { localStorage.setItem('ml_main_pix', JSON.stringify({ code: code, cid: checkoutId || '', ts: Date.now() })); } catch(e) {}
   }
   // Carrinho vazio no load: se ha um pedido MAIN recente (<2h), nao-oferecido e PAGO -> /up/ (recupera
   // quem fechou a aba no delay/voltou). Se nao pago -> /recompensas/ (comportamento normal). Retorna true
@@ -39,7 +40,7 @@
     // Agora so desiste se o TENF desse pedido ja foi PAGO; senao /esgotou/ retoma o passo (oferta, PIX pendente ou TENF).
     var upDone = ''; try { upDone = localStorage.getItem('ml_up_done') || ''; } catch(e) {}
     if (o.code === upDone) return false;
-    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(o.code))
+    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(o.code) + (o.cid ? '&checkout_id=' + encodeURIComponent(o.cid) : ''))
       .then(function(r){ return r.json(); })
       .then(function(d){
         if (d && d.status === 'paid') {
@@ -1303,12 +1304,14 @@
       }
 
       paymentCode = data.payment_code;
+      checkoutId = data.checkout_id || null;
       rememberMainPix(paymentCode);
 
       // ═══ FASE 3A: Cache PIX data for idempotency ═══
       try {
         sessionStorage.setItem('ml_pending_pix', JSON.stringify({
           payment_code: data.payment_code,
+          checkout_id: data.checkout_id || '',
           pix_qrcode_text: data.pix_qrcode_text,
           amount: totalAmount,
           created_at: Date.now()
@@ -1332,6 +1335,7 @@
   // ═══ Show cached PIX (idempotency) ═══
   function showExistingPix(pixData, totalAmount, items) {
     paymentCode = pixData.payment_code;
+    checkoutId = pixData.checkout_id || null;
     rememberMainPix(paymentCode);
 
     var loading = document.getElementById('pix-loading');
@@ -1608,7 +1612,7 @@
   function checkPaymentStatus(manual) {
     if (!paymentCode) return;
 
-    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(paymentCode))
+    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(paymentCode) + (checkoutId ? '&checkout_id=' + encodeURIComponent(checkoutId) : ''))
       .then(function(r) { try { window.__mlTtSkip = (r.headers.get('X-TT-Skip') === '1'); } catch(e) {} return r.json(); })
       .then(function(data) {
         if (data.status === 'paid') {

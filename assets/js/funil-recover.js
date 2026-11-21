@@ -21,7 +21,7 @@
   if (Date.now() - last < 60000) return;
   try { sessionStorage.setItem(k, String(Date.now())); } catch (e) {}
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/api/pix/check-payment.php?code=' + encodeURIComponent(o.code));
+  xhr.open('GET', '/api/pix/check-payment.php?code=' + encodeURIComponent(o.code) + (o.cid ? '&checkout_id=' + encodeURIComponent(o.cid) : ''));
   xhr.onload = function () {
     var d = null; try { d = JSON.parse(xhr.responseText); } catch (e) {}
     if (!d || d.status !== 'paid') return;

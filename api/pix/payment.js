@@ -78,5 +78,5 @@ module.exports = async (req, res) => {
   };
   txSave(tx);
 
-  res.status(200).json({ success: true, payment_code: paymentCode, pix_qrcode_text: pixCode, amount, status });
+  res.status(200).json({ success: true, payment_code: paymentCode, checkout_id: checkoutId, pix_qrcode_text: pixCode, amount, status });
 };

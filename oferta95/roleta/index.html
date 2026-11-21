@@ -395,7 +395,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             document.getElementById('resgatar-premio').addEventListener('click', () => {
                 // Logic to redeem the prize
                 const queryParams = getQueryParams();
-                const baseUrl = '../recompensas/index.php';
+                const baseUrl = '../recompensas/';
                 const redirectUrl = queryParams ? `${baseUrl}?${queryParams}` : baseUrl;
                 window.location.href = redirectUrl;
             });
