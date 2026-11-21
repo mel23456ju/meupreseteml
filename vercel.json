@@ -7,6 +7,10 @@
     { "source": "/api/fb-capi.php", "destination": "/api/fb-capi" },
     { "source": "/api/repix.php", "destination": "/api/repix" },
     { "source": "/api/replay.php", "destination": "/api/replay" },
-    { "source": "/api/metadados.php", "destination": "/api/metadados" }
+    { "source": "/api/metadados.php", "destination": "/api/metadados" },
+    { "source": "/api/log.php", "destination": "/api/log" },
+    { "source": "/api/feature-flags.php", "destination": "/api/feature-flags" },
+    { "source": "/api/esgotou.php", "destination": "/api/esgotou" },
+    { "source": "/api/reembolso.php", "destination": "/api/reembolso" }
   ]
 }
