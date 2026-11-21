@@ -1,0 +1,112 @@
+/* Roleta no padrão 25 anos, tema de Natal (oferta_02). Carregado DEPOIS do XpQX6XXYX8wv.css, que continua
+   valendo só pelas animações de giro (spinToRetryThenWin / spinToOne), overlay e popups base. */
+
+* { font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; }
+html, body { background: #ffe600; }
+body { -webkit-tap-highlight-color: transparent; overflow-x: hidden; }
+
+#page-content {
+    background: #ffe600 radial-gradient(circle at 50% 58%, rgba(255,255,255,.55) 0, rgba(255,255,255,0) 62%) no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh; min-height: 100dvh;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));   /* espaço da prova social */
+}
+
+/* topo: logo 25 anos + selo NATAL (era 11.11 até 16/11; a classe manteve o nome) */
+.faixa { display: flex; align-items: center; justify-content: space-between; max-width: 480px; margin: 0 auto; padding: 10px 16px 0; }
+.faixa-logo { display: block; height: 34px; width: auto; }
+.selo-1111 { background: #d01f2e; color: #fff; font-weight: 900; font-size: 15px; letter-spacing: .5px; line-height: 1;
+    padding: 7px 10px; border-radius: 8px; box-shadow: 0 2px 0 rgba(0,0,0,.15), inset 0 -2px 0 #d9a520; }
+
+.palco { max-width: 520px; margin: 0 auto; padding: 0 16px; text-align: center; }
+h1.titulo { padding: 0; margin: clamp(10px, 2.5svh, 22px) 0 6px; font-size: clamp(20px, 5.6vw, 26px); line-height: 1.2; font-weight: 800;
+    color: #2d3277; letter-spacing: -.3px; text-wrap: balance; }
+h1.titulo b { font-weight: 900; color: #2d3277; background: #fff; padding: 0 6px; border-radius: 6px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.giros { display: inline-flex; align-items: center; gap: 6px; margin: 4px 0 0; font-size: 14px; color: rgba(0,0,0,.75); }
+.giros b { font-weight: 800; color: #2d3277; }
+.giros .bilhete { width: 10px; height: 10px; border-radius: 50%; background: #2d3277; }
+.giros .bilhete.usado { background: rgba(45,50,119,.25); }
+
+/* roleta: um quadrado que cabe na largura E na altura da tela (celular baixo não empurra o botão para fora) */
+.roulette {
+    --roda: clamp(260px, min(98vw, 100svh - 230px), 500px);
+    position: relative; width: var(--roda); height: var(--roda);
+    /* pode passar um pouco do respiro lateral da página, sempre centralizada */
+    margin: clamp(4px, 1.2svh, 12px) calc((100% - var(--roda)) / 2) 0;
+    /* recorta no círculo: girando, o quadrado do canvas passaria da tela e o celular daria zoom para fora */
+    overflow: hidden; border-radius: 50%;
+}
+
+/* giro casado com as 13 fatias do js/roda-1111.js (o ponteiro do GIRE aponta para a direita):
+   1280.77deg para no "tente novamente" (fatia 9) e 2610deg no 95% (fatia 0) */
+@keyframes giro1111-tente { from { transform: translate(-50%, -50%) rotate(-80deg); } to { transform: translate(-50%, -50%) rotate(1280.77deg); } }
+@keyframes giro1111-premio { from { transform: translate(-50%, -50%) rotate(-80deg); } to { transform: translate(-50%, -50%) rotate(2610deg); } }
+.wheel__spinner_animated_retry_then_win { animation: 10s giro1111-tente cubic-bezier(0.1, 0.1, 0.1, 1) 1 forwards; }
+.wheel__spinner_animated { animation: 10s giro1111-premio cubic-bezier(0.1, 0.1, 0.1, 1) 1 forwards; }
+#roleta2 { position: absolute; top: 50%; left: 50%; width: 100%; max-width: none; z-index: 1; transform: translate(-50%, -50%); }
+#roda { display: block; width: 100%; height: auto; aspect-ratio: 1; }
+/* brilho fixo por cima da roda (não gira junto, como luz de verdade) */
+.roda-brilho { position: absolute; inset: 6.3%; border-radius: 50%; z-index: 2; pointer-events: none;
+    background: radial-gradient(circle at 32% 24%, rgba(255,255,255,.38) 0, rgba(255,255,255,0) 42%); }
+/* "GIRE" do centro: a mão do Mercado Livre apontando para a DIREITA (assets/images/roleta/mao-gire.webp, 360x229).
+   O centro da elipse fica no centro da roda (46.4% / 45.9% da imagem) e a mão gira 9.8deg para a ponta do dedo
+   ficar na linha do centro — é ali que a fatia sorteada para. */
+#roleta3.gire { position: absolute; top: 50%; left: 50%; z-index: 10; width: 24%; height: auto; max-width: none; margin: 0; padding: 0;
+    border: 0; background: none; box-shadow: none; cursor: pointer; line-height: 0;
+    transform-origin: 46.4% 45.9%; transform: translate(-46.4%, -45.9%) rotate(9.8deg);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); animation: gire-pulsa 2.4s ease-in-out infinite; }
+#roleta3.gire img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+@keyframes gire-pulsa {
+    0%, 100% { transform: translate(-46.4%, -45.9%) rotate(9.8deg) scale(1); }
+    50% { transform: translate(-46.4%, -45.9%) rotate(9.8deg) scale(1.02); }
+}
+
+/* tela de carregamento: amarela com a logo e uma barrinha */
+#loading-screen { display: flex; flex-direction: column; gap: 22px; background: #ffe600; transition: opacity .35s ease; }
+#loading-screen.saindo { opacity: 0; }
+.carrega-logo { width: 150px; height: auto; animation: carrega-pulsa 1.2s ease-in-out infinite; }
+.carrega-barra { width: 120px; height: 4px; border-radius: 2px; background: rgba(45,50,119,.15); overflow: hidden; }
+.carrega-barra span { display: block; width: 40%; height: 100%; border-radius: 2px; background: #2d3277; animation: carrega-anda 1s ease-in-out infinite; }
+@keyframes carrega-pulsa { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes carrega-anda { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+
+/* botão */
+.button-roulette { margin: clamp(8px, 2svh, 18px) 0 0; display: flex; justify-content: center; }
+#button-cta { width: min(100%, 340px); height: 52px; margin: 0; background: #3483fa; color: #fff; border: 0; border-radius: 10px;
+    font-size: 17px; font-weight: 800; letter-spacing: .3px; box-shadow: 0 6px 18px rgba(52,131,250,.35);
+    animation: pulso-cta 1.8s ease-in-out infinite; }
+#button-cta:active { background: #2968c8; }
+@keyframes pulso-cta { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.035); } }
+.rodape-1111 { margin: 14px 0 0; font-size: 12px; color: rgba(0,0,0,.55); }
+
+/* popups no padrão ML */
+.overlay { background: rgba(0,0,0,.55); }
+.popup { width: min(88vw, 360px); padding: 24px 20px 20px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.25); animation: popup-entra .3s ease-out; }
+@keyframes popup-entra { from { opacity: 0; transform: translate(-50%, -46%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+.popup img { width: 88px; height: 88px; margin: 12px auto 4px; display: block; }
+.popup h2 { font-size: 24px; font-weight: 800; color: rgba(0,0,0,.9); }
+.popup p { font-size: 15px; line-height: 1.45; color: rgba(0,0,0,.7); margin: 10px 0 18px; }
+.popup p b { color: rgba(0,0,0,.9); font-weight: 700; }
+.popup .cupom { display: inline-block; margin: 2px 0 0; padding: 8px 14px; border: 2px dashed #3483fa; border-radius: 10px;
+    color: #2d3277; font-weight: 900; font-size: 22px; background: rgba(52,131,250,.06); }
+.popup button { width: 100%; height: 48px; margin: 0; padding: 0 16px; background: #3483fa; color: #fff; border-radius: 10px;
+    font-size: 16px; font-weight: 700; box-shadow: none; animation: pulso-cta 1.8s ease-in-out infinite; }
+
+/* prova social: cartão branco discreto que sobe e some suave */
+.people { left: 50%; right: auto; bottom: calc(12px + env(safe-area-inset-bottom)); width: min(calc(100% - 24px), 420px); min-height: 0;
+    transform: translateX(-50%); justify-content: flex-start; gap: 10px; padding: 10px 14px; color: rgba(0,0,0,.8);
+    background: #fff; border: 0; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,.16); z-index: 900;
+    transition: opacity .35s ease, transform .35s ease; }
+.people.slide-animation { animation: prova-entra .45s ease-out; }
+.people.saindo { opacity: 0; transform: translate(-50%, 12px); }
+@keyframes prova-entra { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.people img { width: 36px; height: 36px; background: #eee; }
+.people p { font-size: 13px; line-height: 1.35; text-align: left; }
+.people p b { font-weight: 700; color: rgba(0,0,0,.9); }
+.people p .pct { color: #00a650; }
+.people p small { display: block; font-size: 12px; color: rgba(0,0,0,.5); }
+.people .ponto { width: 8px; height: 8px; border-radius: 50%; background: #00a650; flex-shrink: 0; margin-left: auto; animation: pulse 1.5s ease infinite; }
+
+@media (min-width: 768px) { .faixa-logo { height: 40px; } }
+/* celular baixo: roda um pouco menor para o botão não ficar atrás do cartão de prova social */
+@media (max-height: 700px) { .roulette { --roda: clamp(240px, min(98vw, 100svh - 300px), 500px); } }
