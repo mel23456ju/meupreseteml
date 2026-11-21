@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/api/pix/payment.php", "destination": "/api/pix/payment" },
+    { "source": "/api/pix/check-payment.php", "destination": "/api/pix/check-payment" },
+    { "source": "/api/cliente.php", "destination": "/api/cliente" },
+    { "source": "/api/cep.php", "destination": "/api/cep" },
+    { "source": "/api/fb-capi.php", "destination": "/api/fb-capi" },
+    { "source": "/api/repix.php", "destination": "/api/repix" },
+    { "source": "/api/replay.php", "destination": "/api/replay" },
+    { "source": "/api/metadados.php", "destination": "/api/metadados" }
+  ]
+}

